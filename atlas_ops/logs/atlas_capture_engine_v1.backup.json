@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-06-11T22:02:35.845Z",
+  "updatedAt": "2026-06-11T22:05:27.948Z",
+  "captures": [
+    {
+      "id": "capture-mqa1qhi8-851a43",
+      "source": "Text",
+      "originalInput": "Need to call DMV tomorrow.",
+      "timestamp": "2026-06-11T22:05:27.956Z",
+      "confidence": 0.7000000000000001,
+      "classification": {
+        "type": "Task",
+        "priority": "High",
+        "category": "Personal",
+        "title": "Call DMV .",
+        "confidence": 0.7000000000000001,
+        "summary": "Need to call DMV tomorrow.",
+        "rationale": [
+          "Action-oriented language detected."
+        ],
+        "entities": []
+      },
+      "createdMemoryId": "memory-mqa1qhi1-2a27ac",
+      "status": "Success"
+    },
+    {
+      "id": "capture-mqa1qhiy-12017f",
+      "source": "Text",
+      "originalInput": "Project EchoFrame launch plan for Avery Industries LLC.",
+      "timestamp": "2026-06-11T22:05:27.979Z",
+      "confidence": 0.75,
+      "classification": {
+        "type": "Project",
+        "priority": "Medium",
+        "category": "EchoFrame",
+        "title": "EchoFrame launch plan for Avery Industries LLC.",
+        "confidence": 0.75,
+        "summary": "Project EchoFrame launch plan for Avery Industries LLC.",
+        "rationale": [
+          "Project-oriented language detected."
+        ],
+        "entities": [
+          {
+            "type": "Project",
+            "value": "EchoFrame",
+            "linkedId": "echoframe"
+          },
+          {
+            "type": "Company",
+            "value": "Project EchoFrame launch plan for Avery Industries LLC",
+            "linkedId": "project-echoframe-launch-plan-for-avery-industries-llc"
+          }
+        ]
+      },
+      "createdMemoryId": "memory-mqa1qhil-abc1a0",
+      "status": "Success"
+    },
+    {
+      "id": "capture-mqa1qhjc-4e6659",
+      "source": "Text",
+      "originalInput": "My goal is to launch the ATLAS memory core.",
+      "timestamp": "2026-06-11T22:05:28.000Z",
+      "confidence": 0.75,
+      "classification": {
+        "type": "Goal",
+        "priority": "Medium",
+        "category": "ATLAS",
+        "title": "Is to launch the ATLAS memory core.",
+        "confidence": 0.75,
+        "summary": "My goal is to launch the ATLAS memory core.",
+        "rationale": [
+          "Goal-oriented language detected."
+        ],
+        "entities": [
+          {
+            "type": "Project",
+            "value": "ATLAS",
+            "linkedId": "atlas"
+          }
+        ]
+      },
+      "createdMemoryId": "memory-mqa1qhj6-f77966",
+      "status": "Success"
+    },
+    {
+      "id": "capture-mqa1qhjv-3a66bb",
+      "source": "Text",
+      "originalInput": "Nightly debrief: felt focused and finished the memory checks.",
+      "timestamp": "2026-06-11T22:05:28.014Z",
+      "confidence": 0.7000000000000001,
+      "classification": {
+        "type": "Journal Entry",
+        "priority": "High",
+        "category": "Personal",
+        "title": "Nightly Debrief",
+        "confidence": 0.7000000000000001,
+        "summary": "Nightly debrief: felt focused and finished the memory checks.",
+        "rationale": [
+          "Journal-style language detected."
+        ],
+        "entities": []
+      },
+      "createdJournalId": "journal-mqa1qhjl-429267",
+      "status": "Success"
+    }
+  ]
+}

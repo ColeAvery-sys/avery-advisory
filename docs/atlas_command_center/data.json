@@ -1,0 +1,130 @@
+{
+  "company": {
+    "parent": "Avery Industries LLC",
+    "brand": "ATLAS Command Center",
+    "tagline": "Professional AI operations for revenue, approvals, ideas, and division control.",
+    "mode": "Mock backend active until real APIs are connected."
+  },
+  "routes": [
+    { "path": "/dashboard", "label": "Dashboard", "description": "Executive snapshot" },
+    { "path": "/idea-vault", "label": "Idea Vault", "description": "Capture and score ideas" },
+    { "path": "/leads", "label": "Leads", "description": "Revenue pipeline" },
+    { "path": "/content-ops", "label": "Content Ops", "description": "Drafts and publishing queue" },
+    { "path": "/grants", "label": "Grants", "description": "Grant readiness and submissions" },
+    { "path": "/creator-logistics", "label": "Creator Logistics", "description": "Client delivery and operations" },
+    { "path": "/divisions", "label": "Divisions", "description": "Company structure" },
+    { "path": "/settings", "label": "Settings", "description": "Config and integrations" },
+    { "path": "/approval-queue", "label": "Approval Queue", "description": "Items waiting on approval" }
+  ],
+  "statusBadges": ["Draft", "Pending Approval", "Approved", "Sent", "Blocked"],
+  "divisions": [
+    { "name": "AveryTech", "purpose": "Disability-aid tools, automation, and accessibility products.", "status": "Active", "owner": "Guide" },
+    { "name": "ATLAS OS", "purpose": "Company command system, approvals, memory, and routing.", "status": "Active", "owner": "ATLAS Prime" },
+    { "name": "Creator Logistics", "purpose": "Lead generation, editing services, client delivery, and revenue ops.", "status": "Active", "owner": "Broker" },
+    { "name": "Avery Entertainment", "purpose": "IP, media, comics, games, and stories.", "status": "Strategic", "owner": "Apollo" },
+    { "name": "Avery Music Group", "purpose": "Music production, audio publishing, and releases.", "status": "Strategic", "owner": "Apollo" },
+    { "name": "Avery Collectibles", "purpose": "Merch, physical collectibles, and limited product drops.", "status": "Strategic", "owner": "Mercury" },
+    { "name": "Avery Academy", "purpose": "Training, education, courses, and internal SOP learning.", "status": "Strategic", "owner": "Archivist" },
+    { "name": "Avery Community Foundation", "purpose": "Community support, accessibility, and impact programs.", "status": "Strategic", "owner": "Lantern" },
+    { "name": "Apollo Athletics", "purpose": "Movement, training, fitness, and performance products.", "status": "Strategic", "owner": "Forge" },
+    { "name": "Apollo Apparel", "purpose": "Wearables, apparel, and branded lifestyle products.", "status": "Strategic", "owner": "Forge" },
+    { "name": "Apollo Nutrition", "purpose": "Nutrition, supplements, and wellness products.", "status": "Strategic", "owner": "Forge" },
+    { "name": "Apollo Training", "purpose": "Training systems, coaching, and skill development.", "status": "Strategic", "owner": "Forge" },
+    { "name": "Apollo Recovery", "purpose": "Recovery, rest, and disability-support workflows.", "status": "Strategic", "owner": "Sentinel" }
+  ],
+  "dashboard": {
+    "metrics": [
+      { "label": "Revenue in pipeline", "value": "$14.8k", "trend": "+18%" },
+      { "label": "Approval items", "value": "7", "trend": "4 pending" },
+      { "label": "Open leads", "value": "23", "trend": "6 warm" },
+      { "label": "Active divisions", "value": "13", "trend": "all mapped" }
+    ],
+    "focus": [
+      { "title": "Creator Logistics follow-up", "status": "Pending Approval", "note": "Draft proposal, then request approval before sending." },
+      { "title": "Grant packet polish", "status": "Draft", "note": "Finalize evidence and rights notes before submission." },
+      { "title": "ATLAS OS routing", "status": "Blocked", "note": "Needs a real backend approval API before auto-logging." }
+    ],
+    "activity": [
+      { "time": "09:15", "item": "Lead scoring refreshed for Creator Logistics.", "status": "Approved" },
+      { "time": "09:30", "item": "New idea captured for Idea Vault review.", "status": "Draft" },
+      { "time": "10:05", "item": "Proposal placed into approval queue.", "status": "Pending Approval" },
+      { "time": "10:20", "item": "Grant requirement missing evidence attachments.", "status": "Blocked" }
+    ]
+  },
+  "ideaVault": {
+    "captureInbox": [
+      { "idea": "Executive morning brief with auto-priority scoring", "source": "ATLAS note", "status": "Draft" },
+      { "idea": "Creator Logistics referral follow-up automation", "source": "Revenue note", "status": "Pending Approval" },
+      { "idea": "AveryTech accessibility pilot for caregivers", "source": "Grant note", "status": "Approved" }
+    ],
+    "scoreQueue": [
+      { "idea": "Idea Vault reminders", "value": "High", "effort": "Low", "status": "Approved" },
+      { "idea": "Content repurposing engine", "value": "Medium", "effort": "Medium", "status": "Draft" },
+      { "idea": "Voice note intake to task queue", "value": "High", "effort": "High", "status": "Pending Approval" }
+    ]
+  },
+  "leads": {
+    "pipeline": [
+      { "name": "Leo Media", "stage": "Discovery", "value": "$2,400", "status": "Draft" },
+      { "name": "Dani Creative", "stage": "Proposal Ready", "value": "$3,500", "status": "Pending Approval" },
+      { "name": "Safe Place Server", "stage": "Follow-up", "value": "$1,200", "status": "Approved" },
+      { "name": "Apollo referral", "stage": "Closed Won", "value": "$6,800", "status": "Sent" }
+    ]
+  },
+  "contentOps": {
+    "queue": [
+      { "title": "Weekly ATLAS update", "owner": "ATLAS OS", "status": "Draft", "channel": "Internal" },
+      { "title": "Creator Logistics clip batch", "owner": "Creator Logistics", "status": "Pending Approval", "channel": "Client" },
+      { "title": "Founder essay outline", "owner": "AveryTech", "status": "Approved", "channel": "Public" },
+      { "title": "Grant explainer video", "owner": "Avery Community Foundation", "status": "Blocked", "channel": "Grant" }
+    ]
+  },
+  "grants": {
+    "pipeline": [
+      { "name": "Accessibility pilot grant", "agency": "State program", "stage": "Draft", "status": "Draft" },
+      { "name": "Assistive tech evidence packet", "agency": "Foundations", "stage": "Review", "status": "Pending Approval" },
+      { "name": "Community support microgrant", "agency": "Local fund", "stage": "Submitted", "status": "Sent" }
+    ]
+  },
+  "creatorLogistics": {
+    "board": [
+      { "client": "Dani", "deliverable": "Short-form clip batch", "status": "Pending Approval", "due": "Today" },
+      { "client": "Leo", "deliverable": "Edited intro package", "status": "Approved", "due": "Tomorrow" },
+      { "client": "Apollo", "deliverable": "Systems online message draft", "status": "Draft", "due": "Today" },
+      { "client": "Internal", "deliverable": "Delivery checklist", "status": "Blocked", "due": "Waiting on backend" }
+    ]
+  },
+  "settings": {
+    "guardrails": [
+      "Never auto-send emails, DMs, proposals, or deliverables without approval.",
+      "Keep approvals, logging, and draft history visible at all times.",
+      "Use Avery Industries LLC everywhere.",
+      "Keep the UI dense, simple, mobile-friendly, and executive-grade."
+    ],
+    "connections": [
+      { "system": "CRM", "status": "Mock only", "note": "Needs a real database or API." },
+      { "system": "Approvals", "status": "Mock only", "note": "Needs persistent approval workflow storage." },
+      { "system": "Email / DM sending", "status": "Blocked", "note": "Must remain approval-gated." },
+      { "system": "File storage", "status": "Mock only", "note": "Needs backend file sync." },
+      { "system": "Analytics", "status": "Mock only", "note": "Needs real event tracking." }
+    ]
+  },
+  "approvalQueue": {
+    "items": [
+      { "item": "Creator Logistics proposal to Dani", "reason": "Outbound client deliverable", "status": "Pending Approval" },
+      { "item": "Grant response draft", "reason": "External submission", "status": "Draft" },
+      { "item": "Apollo reply message", "reason": "Outbound DM", "status": "Blocked" },
+      { "item": "Content post for public channel", "reason": "Public posting", "status": "Approved" },
+      { "item": "Invoice follow-up", "reason": "Money-moving action", "status": "Pending Approval" }
+    ]
+  },
+  "backendGaps": [
+    "Persistent database for tasks, approvals, leads, and notes.",
+    "Real CRM and lead source integrations.",
+    "Email and DM connectors with approval workflow storage.",
+    "Grant document storage and submission tracking.",
+    "Content publishing API integrations.",
+    "Analytics and event logging backend.",
+    "Authentication and user permissions."
+  ]
+}

@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+echo "ATLAS Command Center local helper"
+echo "Local app: http://localhost:8788/dashboard"
+echo ""
+echo "Start the command center:"
+echo "  npm run atlas:command-center"
+echo ""
+echo "Primary verification command:"
+echo "  npm test"
+echo ""
+echo "Health endpoint:"
+echo "  http://localhost:8788/api/health"

@@ -1,0 +1,14 @@
+platform,account_or_brand,content_type,posting_status,approval_required,monetization_path,automation_priority,notes
+YouTube,Cole Avery personal brand,long-form video,draft,true,authority and lead routing,medium,manual upload only
+YouTube Shorts,The New Prometheus,short-form clips,draft,true,authority and traffic,high,reuse approved scripts
+Instagram,AveryTech,reels and posts,draft,true,brand trust and leads,medium,no auto-posting
+Facebook Pages,AveryTech and Creator Logistics,local posts and updates,draft,true,local leads and credibility,medium,ad spend requires approval
+Reddit,Community-specific accounts,discussion posts,draft,true,research and soft leads,low,no spam or fake engagement
+Etsy,Avery Industries LLC digital products,listings,draft,true,digital products and templates,medium,no trademark-risk tags
+Amazon books,KDP-style author listings,books and workbooks,draft,true,books and authority,low,no fake reviews
+Teespring / merch,AveryTech and creative brands,merch listings,draft,true,merch revenue,low,no copyrighted designs
+Creator Logistics website,Creator Logistics,service page and intake,draft,true,client services,high,best near-term cash route
+AveryTech website,AveryTech,mission and demo pages,draft,true,partners and funders,high,no medical claims
+New Prometheus channel,The New Prometheus,essays and shorts,draft,true,authority and audience,medium,links to AveryTech mission
+Future VGen-style services marketplace,Avery Industries LLC,service listings,draft,true,service requests,high,quote and acceptance need approval
+

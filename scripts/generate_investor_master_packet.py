@@ -1,0 +1,497 @@
+import subprocess
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / "docs" / "investor_master_packet"
+CHROME = Path(r"C:\Program Files\Google\Chrome\Application\chrome.exe")
+DATE = "June 3, 2026"
+COMPANY = "Avery Industries LLC"
+FOUNDER = "Cole Avery"
+
+
+def main():
+    OUT.mkdir(parents=True, exist_ok=True)
+    html = OUT / "avery_industries_investor_master_packet.html"
+    pdf = OUT / "avery_industries_investor_master_packet.pdf"
+    md = OUT / "avery_industries_investor_master_packet.md"
+
+    html.write_text(render_html(), encoding="utf-8")
+    md.write_text(render_markdown(), encoding="utf-8")
+    print_to_pdf(html, pdf)
+    print(pdf)
+
+
+def print_to_pdf(source: Path, target: Path):
+    if not CHROME.exists():
+        raise FileNotFoundError(f"Chrome not found: {CHROME}")
+    subprocess.run(
+        [
+            str(CHROME),
+            "--headless=new",
+            "--disable-gpu",
+            "--no-pdf-header-footer",
+            f"--print-to-pdf={target}",
+            source.resolve().as_uri(),
+        ],
+        check=True,
+    )
+
+
+def render_html():
+    return f"""<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{COMPANY} Investor Master Packet</title>
+  <style>
+    @page {{ size: Letter; margin: 0.42in; }}
+    * {{ box-sizing: border-box; }}
+    body {{ margin: 0; font-family: Arial, Helvetica, sans-serif; color: #151d27; background: #eef2f5; line-height: 1.4; }}
+    .page {{ min-height: 10in; page-break-after: always; background: #fff; padding: 0.42in; position: relative; overflow: hidden; }}
+    .cover {{
+      color: white;
+      background:
+        radial-gradient(circle at 78% 18%, rgba(77,154,127,0.38), transparent 24%),
+        linear-gradient(135deg, #090f1b 0%, #102139 55%, #dce8ef 55%, #ffffff 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }}
+    .brandmark {{ width: 78px; height: 78px; border: 2px solid rgba(255,255,255,0.72); display: grid; place-items: center; font-weight: 900; font-size: 28px; }}
+    .kicker {{ text-transform: uppercase; letter-spacing: 1.25px; font-size: 10px; font-weight: 900; color: #5f7388; margin-bottom: 8px; }}
+    .cover .kicker {{ color: #cde4f7; }}
+    h1, h2, h3 {{ margin: 0; letter-spacing: 0; }}
+    h1 {{ font-size: 44px; line-height: 1.02; max-width: 670px; }}
+    h2 {{ font-size: 27px; color: #101827; margin-bottom: 14px; }}
+    h3 {{ font-size: 15px; color: #1e344f; margin-bottom: 6px; }}
+    .subtitle {{ font-size: 18px; max-width: 680px; color: rgba(255,255,255,0.88); margin-top: 16px; }}
+    .cover-card {{ background: rgba(255,255,255,0.94); color: #101827; width: 56%; margin-left: auto; padding: 22px; border-radius: 6px; }}
+    .grid {{ display: grid; gap: 14px; }}
+    .cols-2 {{ grid-template-columns: 1fr 1fr; }}
+    .cols-3 {{ grid-template-columns: 1fr 1fr 1fr; }}
+    .cols-4 {{ grid-template-columns: repeat(4, 1fr); }}
+    .card {{ border: 1px solid #dce3ea; border-radius: 6px; padding: 15px; background: white; }}
+    .dark {{ background: #101827; color: white; border: 0; }}
+    .dark h3 {{ color: #cde4f7; }}
+    .metric {{ background: #101827; color: white; padding: 13px; border-radius: 6px; min-height: 92px; }}
+    .metric strong {{ display: block; color: #cde4f7; font-size: 26px; margin-bottom: 5px; }}
+    table {{ width: 100%; border-collapse: collapse; font-size: 11px; }}
+    th {{ text-align: left; background: #101827; color: white; padding: 8px; }}
+    td {{ border-bottom: 1px solid #dce3ea; padding: 8px; vertical-align: top; }}
+    ul {{ margin: 7px 0 0 18px; padding: 0; }}
+    li {{ margin: 4px 0; }}
+    .tag {{ display: inline-block; padding: 4px 8px; border-radius: 999px; background: #e9f1f7; color: #1e344f; font-size: 10px; font-weight: 900; margin: 3px 3px 0 0; }}
+    .band {{ background: #e9f1f7; border-left: 5px solid #2d6b88; padding: 14px; margin: 10px 0 14px; }}
+    .warning {{ background: #fff8e6; border: 1px solid #f2dd9f; color: #4a3b00; padding: 10px; border-radius: 5px; font-size: 11px; }}
+    .bar {{ height: 10px; border-radius: 999px; background: #dce3ea; overflow: hidden; margin-top: 6px; }}
+    .bar span {{ display: block; height: 100%; background: linear-gradient(90deg, #1e344f, #2d6b88, #4d9a7f); }}
+    .timeline {{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }}
+    .step {{ border-top: 4px solid #2d6b88; background: #f7f9fb; padding: 12px; border-radius: 4px; }}
+    .footer {{ position: absolute; bottom: 0.22in; left: 0.42in; right: 0.42in; display: flex; justify-content: space-between; border-top: 1px solid #e5e9ee; padding-top: 8px; color: #8b97a5; font-size: 10px; }}
+    .small {{ font-size: 11px; color: #657386; }}
+  </style>
+</head>
+<body>
+  {cover()}
+  {investment_thesis()}
+  {founder_page()}
+  {market_page()}
+  {company_os_page()}
+  {business_model_page()}
+  {portfolio_scorecard()}
+  {traction_metrics()}
+  {creator_logistics_history()}
+  {capital_plan()}
+  {valuation_offer()}
+  {risk_governance()}
+  {review_next_steps()}
+  {appendix()}
+</body>
+</html>"""
+
+
+def page(title, body, subtitle=None):
+    subtitle_html = f"<div class='band'>{subtitle}</div>" if subtitle else ""
+    return f"""<section class="page">
+  <div class="kicker">Investor Master Packet</div>
+  <h2>{title}</h2>
+  {subtitle_html}
+  {body}
+  <div class="footer"><span>{COMPANY}</span><span>{DATE}</span></div>
+</section>"""
+
+
+def cover():
+    return f"""<section class="page cover">
+  <div>
+    <div class="brandmark">AI</div>
+    <div style="margin-top: 78px;">
+      <div class="kicker">Investor master packet</div>
+      <h1>{COMPANY}</h1>
+      <div class="subtitle">Ethical AI operating company for creator services, accessibility technology, founder-led automation, media/IP systems, and sustainable compute.</div>
+    </div>
+  </div>
+  <div class="cover-card">
+    <h3>Core Story</h3>
+    <p>Avery Industries is building the operating system, revenue engine, and founder brand needed to turn ethical AI into a practical company: Creator Logistics for cash flow, ATLAS for operational leverage, and AveryTech for accessibility products.</p>
+    <p class="small">Founder: {FOUNDER} | Prepared for investors, partners, grants, and strategic diligence.</p>
+  </div>
+  <div style="font-size:12px;color:rgba(255,255,255,0.75);">Prepared {DATE} | Confidential draft for review</div>
+</section>"""
+
+
+def investment_thesis():
+    body = """
+    <div class="grid cols-3">
+      <div class="metric"><strong>1</strong>Primary near-term cash engine: Creator Logistics</div>
+      <div class="metric"><strong>1</strong>Operating platform: ATLAS HQ / ATLAS OS</div>
+      <div class="metric"><strong>3</strong>Expansion pillars: accessibility, media/IP, sustainable compute</div>
+    </div>
+    <div class="grid cols-2" style="margin-top:14px;">
+      <div class="card dark">
+        <h3>Why this can work</h3>
+        <ul>
+          <li>Services create revenue before large software risk.</li>
+          <li>ATLAS reduces founder and operations bottlenecks.</li>
+          <li>Ethical AI positioning creates trust and differentiation.</li>
+          <li>AveryTech creates mission, grant, and product upside.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>What this is not</h3>
+        <ul>
+          <li>Not a vague AI app pitch.</li>
+          <li>Not a media empire with no cash path.</li>
+          <li>Not a formal securities offering document.</li>
+          <li>Not claiming verified traction without evidence attached.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="band"><strong>Analyst conclusion:</strong> the highest-approval version of Avery Industries is focused: Creator Logistics revenue + ATLAS operating leverage + AveryTech ethical AI/accessibility upside.</div>
+    """
+    return page("Investment Thesis", body)
+
+
+def founder_page():
+    body = """
+    <div class="grid cols-2">
+      <div class="card dark">
+        <h3>Cole Avery</h3>
+        <p>Founder, CEO, AI Systems Architect, software builder, digital marketing strategist, and creative technologist.</p>
+        <p>Positioning: founder-inventor building the command center for Ethical AI, accessibility technology, creator infrastructure, and future media/IP systems.</p>
+      </div>
+      <div class="card">
+        <h3>Founder proof points</h3>
+        <ul>
+          <li>344 TypeScript system modules in the local ATLAS/Avery workspace.</li>
+          <li>32 test files and 27 build-batch documents.</li>
+          <li>Reported 50M+ cross-platform campaign views.</li>
+          <li>Reported 100% 5-star Creator Logistics editing quality.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="warning"><strong>Diligence note:</strong> social and service-quality metrics are currently written as reported metrics until analytics exports, screenshots, reviews, or testimonials are attached.</div>
+    """
+    return page("Founder Profile", body)
+
+
+def market_page():
+    body = """
+    <table>
+      <tr><th>Market Need</th><th>Avery Response</th><th>Why It Matters</th></tr>
+      <tr><td>Creators are overwhelmed by footage, platforms, and operations.</td><td>Creator Logistics packages editing, shorts, upload prep, thumbnails, and channel systems.</td><td>Immediate revenue path.</td></tr>
+      <tr><td>AI is facing trust, rights, and sustainability backlash.</td><td>Ethical AI governance, asset rights, human approval, and founder-created/approved materials.</td><td>Differentiation and risk control.</td></tr>
+      <tr><td>Disabled and overwhelmed users need lower-friction tools.</td><td>AveryTech builds executive-function, accessibility, and smart-assist systems.</td><td>Mission-driven product and grant potential.</td></tr>
+      <tr><td>AI compute is becoming an energy and infrastructure issue.</td><td>Solar-first, efficient, distributed, and edge/home-server compute roadmap.</td><td>Long-term infrastructure advantage.</td></tr>
+    </table>
+    """
+    return page("Market and Timing", body)
+
+
+def company_os_page():
+    body = """
+    <div class="grid cols-3">
+      <div class="card"><h3>ATLAS HQ</h3><p>Central operating system for tasks, memory, agents, reports, and approvals.</p></div>
+      <div class="card"><h3>Master Task Board</h3><p>Temporary Google Sheets company database until full dashboard exists.</p></div>
+      <div class="card"><h3>Daily Reports</h3><p>CEO health view for revenue, leads, projects, blockers, and approvals.</p></div>
+      <div class="card"><h3>Approval Gates</h3><p>No spend, outreach, publishing, grants, hiring, contracts, or public claims without approval.</p></div>
+      <div class="card"><h3>Company Memory</h3><p>Decisions, SOPs, ideas, prompts, reports, and knowledge vault.</p></div>
+      <div class="card"><h3>Agent Framework</h3><p>Agent registry, departments, manager hierarchy, and daily report rules.</p></div>
+    </div>
+    """
+    return page("ATLAS Operating System", body)
+
+
+def business_model_page():
+    body = """
+    <table>
+      <tr><th>Revenue Lane</th><th>Offer</th><th>Stage</th><th>Priority</th></tr>
+      <tr><td>Creator Logistics</td><td>Editing, shorts, thumbnails, creator operations, upload prep, analytics</td><td>First cash engine</td><td>Highest</td></tr>
+      <tr><td>Avery Advisory</td><td>Marketing, automation, AI integration, content systems consulting</td><td>Near-term service expansion</td><td>High</td></tr>
+      <tr><td>AveryTech</td><td>ATLAS Assist, EchoFrame, ATLAS OS, accessibility tools</td><td>Prototype / validation</td><td>High after cash flow</td></tr>
+      <tr><td>Avery Academy</td><td>AI, automation, marketing, accessibility, entrepreneurship training</td><td>Future</td><td>Medium</td></tr>
+      <tr><td>Media / Publishing / Music / Collectibles</td><td>Books, content, soundtracks, IP, merch, figures, plushes</td><td>Future optionality</td><td>Parked until capacity exists</td></tr>
+    </table>
+    """
+    return page("Business Model", body)
+
+
+def portfolio_scorecard():
+    rows = [
+        ("Creator Logistics", 95, 90, "Build first"),
+        ("ATLAS HQ / ATLAS OS", 70, 100, "Build first"),
+        ("AveryTech / ATLAS Assist / EchoFrame", 80, 100, "Validate after revenue base"),
+        ("Editor ColeTrain", 95, 85, "Build first"),
+        ("Atlas Protocol", 85, 100, "Build for trust and product demand"),
+        ("The New Prometheus", 80, 95, "Build for founder authority"),
+        ("Publishing / Music / Entertainment", 55, 80, "Park until cash systems stabilize"),
+        ("Collectibles / Physical Products", 60, 65, "Prototype first"),
+    ]
+    trs = "\n".join(
+        f"<tr><td>{name}</td><td><div class='bar'><span style='width:{rev}%'></span></div></td><td><div class='bar'><span style='width:{strat}%'></span></div></td><td>{priority}</td></tr>"
+        for name, rev, strat, priority in rows
+    )
+    body = f"""
+    <table>
+      <tr><th>Asset / Division</th><th>Revenue Signal</th><th>Strategic Value</th><th>Execution Priority</th></tr>
+      {trs}
+    </table>
+    """
+    return page("Portfolio Scorecard", body)
+
+
+def traction_metrics():
+    body = """
+    <div class="grid cols-4">
+      <div class="metric"><strong>50M+</strong>Reported cross-platform views</div>
+      <div class="metric"><strong>100%</strong>Reported 5-star editing quality</div>
+      <div class="metric"><strong>344</strong>TypeScript system modules</div>
+      <div class="metric"><strong>435+</strong>Indexed workspace files</div>
+    </div>
+    <div class="grid cols-2" style="margin-top:14px;">
+      <div class="card">
+        <h3>Social reach channels</h3>
+        <p>X/Twitter, Facebook, Reddit, YouTube, and Twitch across multiple campaigns.</p>
+        <div class="bar"><span style="width:92%"></span></div>
+        <p class="small">Replace with exact platform exports when attached.</p>
+      </div>
+      <div class="card dark">
+        <h3>Creator Logistics conversion story</h3>
+        <p>High-traffic campaign experience plus reported 5-star editing quality gives the company a practical bridge from attention to service revenue.</p>
+      </div>
+    </div>
+    """
+    return page("Traction and Evidence", body)
+
+
+def creator_logistics_history():
+    body = """
+    <div class="grid cols-2">
+      <div class="card dark">
+        <h3>2-year solo operating history</h3>
+        <p>Creator Logistics has been operated successfully by Cole Avery for roughly two years as a founder-led service capability. The next growth step is converting solo execution into a repeatable team-based delivery system.</p>
+      </div>
+      <div class="card">
+        <h3>Why expansion is now logical</h3>
+        <ul>
+          <li>Service delivery knowledge has been learned directly by the founder.</li>
+          <li>ATLAS now has task, approval, reporting, memory, and delivery systems to support delegation.</li>
+          <li>Reported editing quality is strong enough to justify scaling carefully.</li>
+          <li>The bottleneck is team capacity, not lack of service direction.</li>
+        </ul>
+      </div>
+    </div>
+    <table style="margin-top:14px;">
+      <tr><th>Expansion Need</th><th>Use of Investment</th><th>Expected Result</th></tr>
+      <tr><td>Delivery capacity</td><td>Hire editor / contractor bench</td><td>More client work can be accepted without quality collapse</td></tr>
+      <tr><td>Operations</td><td>Creator Logistics Operations Manager or coordinator</td><td>Founder time is freed for sales, systems, and strategy</td></tr>
+      <tr><td>Sales pipeline</td><td>Offer page, outreach system, case studies</td><td>More qualified leads and proposals</td></tr>
+      <tr><td>Proof package</td><td>Testimonials, analytics screenshots, portfolio samples</td><td>Reported claims become verified claims</td></tr>
+    </table>
+    """
+    return page("Creator Logistics Expansion Readiness", body, "Creator Logistics is the strongest near-term revenue path because it has two years of founder-led operating history and is ready to move from solo execution to team delivery.")
+
+
+def capital_plan():
+    body = """
+    <div class="grid cols-2">
+      <div class="card dark">
+        <h3>Use of capital</h3>
+        <ul>
+          <li>Creator Logistics sales and delivery operations.</li>
+          <li>First operations manager, editor, or contractor capacity.</li>
+          <li>ATLAS dashboard, database, and ethical AI governance.</li>
+          <li>Client acquisition, proof, and case studies.</li>
+          <li>ATLAS Assist / EchoFrame prototype readiness.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Milestone path</h3>
+        <div class="timeline">
+          <div class="step"><h3>0-30</h3><p>Offer, lead pipeline, delivery tracker.</p></div>
+          <div class="step"><h3>30-90</h3><p>Clients, editor bench, dashboard.</p></div>
+          <div class="step"><h3>90-180</h3><p>ATLAS MVP and accessibility plan.</p></div>
+          <div class="step"><h3>180+</h3><p>Pilots, grants, product validation.</p></div>
+        </div>
+      </div>
+    </div>
+    """
+    return page("Capital Strategy", body)
+
+
+def valuation_offer():
+    body = """
+    <div class="grid cols-3">
+      <div class="metric"><strong>$2.5M</strong>Conservative low-end discussion valuation</div>
+      <div class="metric"><strong>$250K</strong>Suggested low-ball strategic investment ask</div>
+      <div class="metric"><strong>10%</strong>Investor ownership target at that low-end valuation</div>
+    </div>
+    <div class="grid cols-2" style="margin-top:14px;">
+      <div class="card dark">
+        <h3>Best low-ball offer</h3>
+        <p><strong>$250,000 for 10% of Avery Industries LLC</strong>, implying a $2.5M post-money valuation, plus a strategic marketing-services side agreement.</p>
+        <p>This is intentionally founder-friendly enough to preserve control while still giving an early investor meaningful upside.</p>
+      </div>
+      <div class="card">
+        <h3>Alternative 8% version</h3>
+        <p><strong>$250,000 for 8%</strong>, implying a $3.125M post-money valuation.</p>
+        <p>This is the preferred version if the investor gives strong strategic value, flexible terms, or measurable marketing/distribution support.</p>
+      </div>
+    </div>
+    <table style="margin-top:14px;">
+      <tr><th>Offer Component</th><th>Recommended Term</th><th>Reason</th></tr>
+      <tr><td>Cash investment</td><td>$250,000</td><td>Enough to fund team expansion, sales proof, ATLAS dashboard, and prototype readiness without over-raising.</td></tr>
+      <tr><td>Equity range</td><td>8-10%</td><td>Meaningful early upside while preserving founder control.</td></tr>
+      <tr><td>Implied post-money valuation</td><td>$2.5M to $3.125M</td><td>Conservative for a pre-seed/early operating company with service history and AI/software upside.</td></tr>
+      <tr><td>Structure to discuss</td><td>Equity or post-money SAFE</td><td>YC SAFE documents are common early-stage instruments; legal review required.</td></tr>
+      <tr><td>Marketing add-on</td><td>10 years of free or heavily discounted Avery/Creator Logistics marketing support for the investor or partner brand, scoped by annual hours/services</td><td>Adds strategic value without immediately increasing cash needs.</td></tr>
+    </table>
+    <div class="warning"><strong>Legal and finance note:</strong> this is a discussion draft, not an offer to sell securities. Any equity, SAFE, services-for-equity, or marketing-services agreement needs attorney review, tax review, and exact scope limits.</div>
+    """
+    return page("Valuation and Low-Ball Investment Offer", body, "A practical early ask should be simple: enough capital to expand Creator Logistics and ATLAS, small enough to be believable, and structured to preserve founder control.")
+
+
+def risk_governance():
+    body = """
+    <table>
+      <tr><th>Risk</th><th>Control</th></tr>
+      <tr><td>Founder bottleneck</td><td>Daily executive reports, Easy Mode, task board, delegation, first hires.</td></tr>
+      <tr><td>Roadmap sprawl</td><td>Revenue-first priority ladder and parked roadmap policy.</td></tr>
+      <tr><td>AI ethics claims</td><td>Use rights-aware, approval-gated, founder-created/owned/approved language until audited.</td></tr>
+      <tr><td>Unverified metrics</td><td>Keep "reported" label until exports, screenshots, reviews, and testimonials are attached.</td></tr>
+      <tr><td>Compute sustainability</td><td>Efficiency, renewable power, cooling research, and edge/home-server roadmap.</td></tr>
+      <tr><td>Accessibility claims</td><td>No medical claims; use research, prototype, pilot, outcome measurement, grant readiness.</td></tr>
+    </table>
+    """
+    return page("Risk Controls and Governance", body)
+
+
+def review_next_steps():
+    body = """
+    <div class="grid cols-2">
+      <div class="card dark">
+        <h3>Requested investor action</h3>
+        <p>Review this packet, request the supporting evidence room, and schedule a 20-minute strategic investment or partnership call.</p>
+        <p><strong>Discussion target:</strong> $250,000 for 8-10% of Avery Industries LLC, subject to legal, tax, and diligence review.</p>
+      </div>
+      <div class="card">
+        <h3>Diligence package to provide</h3>
+        <ul>
+          <li>Analytics proof for reported 50M+ cross-platform views.</li>
+          <li>Editing reviews/testimonials supporting reported 100% 5-star quality.</li>
+          <li>Creator Logistics offer, delivery SOP, and sample work.</li>
+          <li>ATLAS screenshots, task board, reports, and system docs.</li>
+          <li>LLC, ownership, IP, and legal documents.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="band"><strong>Best sending method:</strong> send a short email with one secure packet link and ask for a 20-minute review call. Do not send multiple large attachments as the first contact.</div>
+    """
+    return page("Investment Review Next Step", body)
+
+
+def appendix():
+    body = """
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>Attached / generated supporting files</h3>
+        <ul>
+          <li>Avery Industries business portfolio packet.</li>
+          <li>Avery Industries investor presentation.</li>
+          <li>Cole Avery personal portfolio.</li>
+          <li>Cole Avery personal brand deck.</li>
+          <li>Avery Industries corporate structure.</li>
+          <li>Metric evidence checklist.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Next evidence to add</h3>
+        <ul>
+          <li>Analytics exports for 50M+ views.</li>
+          <li>Review/testimonial proof for 100% 5-star editing rating.</li>
+          <li>Creator Logistics offer page.</li>
+          <li>Client delivery samples.</li>
+          <li>ATLAS dashboard screenshots.</li>
+          <li>90-day financial plan.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="warning"><strong>Important:</strong> this packet is for strategic conversations. Formal investment documents, financial projections, securities compliance, and legal review should be prepared separately before any investment transaction.</div>
+    """
+    return page("Appendix and Next Evidence", body)
+
+
+def render_markdown():
+    return f"""# {COMPANY} Investor Master Packet
+
+Prepared: {DATE}
+
+Founder: {FOUNDER}
+
+## Core thesis
+
+Avery Industries is an Ethical AI operating company combining Creator Logistics revenue, ATLAS operating leverage, and AveryTech accessibility/product upside.
+
+## Primary story
+
+- Creator Logistics creates near-term cash flow.
+- Creator Logistics has been run successfully by Cole Avery for roughly two years as a solo founder-led service capability.
+- ATLAS coordinates the company through tasks, reports, memory, agents, approvals, and dashboards.
+- AveryTech creates long-term software, accessibility, grant, and partnership potential.
+- Cole Avery is positioned as the founder-inventor and systems architect.
+
+## Key reported metrics
+
+- 50M+ reported cross-platform views.
+- 100% reported 5-star editing-service quality.
+- 344 TypeScript system modules.
+- 32 test files.
+- 435+ indexed workspace files.
+
+## Investor-safe rule
+
+Metrics remain labeled as reported until analytics exports, screenshots, reviews, or testimonials are attached.
+
+## Discussion-draft low-ball investment offer
+
+Recommended anchor:
+
+- $250,000 for 10% of Avery Industries LLC.
+- Implied post-money valuation: $2.5M.
+
+Alternative:
+
+- $250,000 for 8%.
+- Implied post-money valuation: $3.125M.
+
+Strategic add-on:
+
+- 10 years of free or heavily discounted marketing support, scoped by annual hours/services and documented in a separate agreement.
+
+This is not an offer to sell securities. Any equity, SAFE, or marketing-services agreement requires attorney and tax review.
+"""
+
+
+if __name__ == "__main__":
+    main()

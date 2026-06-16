@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-06-11T23:51:25.509Z",
+  "updatedAt": "2026-06-12T15:45:58.943Z",
+  "events": [
+    {
+      "id": "calendar-mqb3mbl1-4cadff",
+      "title": "Follow up: Vendor invoice",
+      "date": "2026-06-07",
+      "startTime": "09:00",
+      "endTime": "09:15",
+      "kind": "Reminder",
+      "participants": [],
+      "notes": "Email follow-up for billing@vendor.com",
+      "status": "Scheduled",
+      "linkedProjectIds": [],
+      "linkedTaskIds": [],
+      "linkedMemoryIds": [],
+      "links": [],
+      "memoryId": "memory-mqb3mbl3-daf3d6",
+      "createdAt": "2026-06-12T15:45:59.077Z",
+      "updatedAt": "2026-06-12T15:45:59.077Z"
+    },
+    {
+      "id": "calendar-mqb3mbp4-cd28bb",
+      "title": "Follow up: Grant approval request",
+      "date": "2026-06-08",
+      "startTime": "09:00",
+      "endTime": "09:15",
+      "kind": "Reminder",
+      "participants": [],
+      "notes": "Email follow-up for cole@averyindustries.com",
+      "status": "Scheduled",
+      "linkedProjectIds": [],
+      "linkedTaskIds": [],
+      "linkedMemoryIds": [],
+      "links": [],
+      "memoryId": "memory-mqb3mbp6-c914ef",
+      "createdAt": "2026-06-12T15:45:59.224Z",
+      "updatedAt": "2026-06-12T15:45:59.224Z"
+    }
+  ]
+}

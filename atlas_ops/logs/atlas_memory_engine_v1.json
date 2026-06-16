@@ -1,0 +1,450 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-06-12T15:45:58.962Z",
+  "updatedAt": "2026-06-12T15:45:59.306Z",
+  "memories": [
+    {
+      "id": "memory-mqb3mbl3-daf3d6",
+      "title": "Follow up: Vendor invoice",
+      "summary": "Reminder: Follow up: Vendor invoice on 2026-06-07 at 09:00",
+      "body": "Email follow-up for billing@vendor.com",
+      "memoryType": "Calendar Event",
+      "source": "Google Calendar",
+      "confidence": 0.8,
+      "status": "Active",
+      "visibility": "Private",
+      "createdAt": "2026-06-12T15:45:59.079Z",
+      "updatedAt": "2026-06-12T15:45:59.079Z",
+      "archivedAt": null
+    },
+    {
+      "id": "memory-mqb3mbp6-c914ef",
+      "title": "Follow up: Grant approval request",
+      "summary": "Reminder: Follow up: Grant approval request on 2026-06-08 at 09:00",
+      "body": "Email follow-up for cole@averyindustries.com",
+      "memoryType": "Calendar Event",
+      "source": "Google Calendar",
+      "confidence": 0.8,
+      "status": "Active",
+      "visibility": "Private",
+      "createdAt": "2026-06-12T15:45:59.226Z",
+      "updatedAt": "2026-06-12T15:45:59.226Z",
+      "archivedAt": null
+    },
+    {
+      "id": "memory-mqb3mbq2-59db93",
+      "title": "Follow up: Vendor invoice",
+      "summary": "Reminder: Follow up: Vendor invoice on 2026-06-07 at 09:00",
+      "body": "Email follow-up for billing@vendor.com",
+      "memoryType": "Calendar Event",
+      "source": "Google Calendar",
+      "confidence": 0.8,
+      "status": "Active",
+      "visibility": "Private",
+      "createdAt": "2026-06-12T15:45:59.258Z",
+      "updatedAt": "2026-06-12T15:45:59.258Z",
+      "archivedAt": null
+    }
+  ],
+  "memoryTags": [
+    {
+      "id": "memory-tag-mqb3mbl4-04cc7c",
+      "memoryId": "memory-mqb3mbl3-daf3d6",
+      "tag": "calendar",
+      "createdAt": "2026-06-12T15:45:59.080Z"
+    },
+    {
+      "id": "memory-tag-mqb3mbl4-cdea35",
+      "memoryId": "memory-mqb3mbl3-daf3d6",
+      "tag": "Reminder",
+      "createdAt": "2026-06-12T15:45:59.080Z"
+    },
+    {
+      "id": "memory-tag-mqb3mbl4-d2809b",
+      "memoryId": "memory-mqb3mbl3-daf3d6",
+      "tag": "Scheduled",
+      "createdAt": "2026-06-12T15:45:59.080Z"
+    },
+    {
+      "id": "memory-tag-mqb3mbp6-76a0ca",
+      "memoryId": "memory-mqb3mbp6-c914ef",
+      "tag": "calendar",
+      "createdAt": "2026-06-12T15:45:59.226Z"
+    },
+    {
+      "id": "memory-tag-mqb3mbp6-b6613d",
+      "memoryId": "memory-mqb3mbp6-c914ef",
+      "tag": "Reminder",
+      "createdAt": "2026-06-12T15:45:59.226Z"
+    },
+    {
+      "id": "memory-tag-mqb3mbp6-1af266",
+      "memoryId": "memory-mqb3mbp6-c914ef",
+      "tag": "Scheduled",
+      "createdAt": "2026-06-12T15:45:59.226Z"
+    },
+    {
+      "id": "memory-tag-mqb3mbq2-dc769d",
+      "memoryId": "memory-mqb3mbq2-59db93",
+      "tag": "calendar",
+      "createdAt": "2026-06-12T15:45:59.258Z"
+    },
+    {
+      "id": "memory-tag-mqb3mbq2-ee38e4",
+      "memoryId": "memory-mqb3mbq2-59db93",
+      "tag": "Reminder",
+      "createdAt": "2026-06-12T15:45:59.258Z"
+    },
+    {
+      "id": "memory-tag-mqb3mbq2-3e662d",
+      "memoryId": "memory-mqb3mbq2-59db93",
+      "tag": "Scheduled",
+      "createdAt": "2026-06-12T15:45:59.258Z"
+    }
+  ],
+  "memoryLinks": [],
+  "journalEntries": [],
+  "journalLinks": [],
+  "memoryActions": [
+    {
+      "id": "memory-action-mqb3mbhv-9c27a3",
+      "actionType": "Email Classified",
+      "objectType": "Email",
+      "objectId": "Grant approval request",
+      "actor": "QA",
+      "status": "Success",
+      "details": "{\"classification\":\"Client\",\"sender\":\"cole@averyindustries.com\"}",
+      "createdAt": "2026-06-12T15:45:58.963Z"
+    },
+    {
+      "id": "memory-action-mqb3mbi5-a36f8a",
+      "actionType": "Email Drafted",
+      "objectType": "Email",
+      "objectId": "email-mqb3mbhs-1fba45",
+      "actor": "QA",
+      "status": "Success",
+      "details": "{\"subject\":\"Grant approval request\",\"threadId\":\"thread-cole-averyindustries-com-mqb3mbhs\",\"classification\":\"Client\",\"status\":\"Draft\",\"followUpStatus\":\"None\"}",
+      "createdAt": "2026-06-12T15:45:58.973Z"
+    },
+    {
+      "id": "memory-action-mqb3mbic-ec314f",
+      "actionType": "Email Classified",
+      "objectType": "Email",
+      "objectId": "Grant approval request",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"classification\":\"Client\",\"sender\":\"cole@averyindustries.com\"}",
+      "createdAt": "2026-06-12T15:45:58.980Z"
+    },
+    {
+      "id": "memory-action-mqb3mbir-c68491",
+      "actionType": "Email Updated",
+      "objectType": "Email",
+      "objectId": "email-mqb3mbhs-1fba45",
+      "actor": "QA",
+      "status": "Success",
+      "details": "{\"status\":\"Draft\"}",
+      "createdAt": "2026-06-12T15:45:58.995Z"
+    },
+    {
+      "id": "memory-action-mqb3mbj3-30751c",
+      "actionType": "Email Classified",
+      "objectType": "Email",
+      "objectId": "Grant approval request",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"classification\":\"Client\",\"sender\":\"cole@averyindustries.com\"}",
+      "createdAt": "2026-06-12T15:45:59.007Z"
+    },
+    {
+      "id": "memory-action-mqb3mbke-1aeb58",
+      "actionType": "Email Sent",
+      "objectType": "Email",
+      "objectId": "email-mqb3mbhs-1fba45",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"subject\":\"Grant approval request\",\"threadId\":\"thread-cole-averyindustries-com-mqb3mbhs\",\"classification\":\"Client\",\"status\":\"Sent\",\"followUpStatus\":\"Overdue Reply\"}",
+      "createdAt": "2026-06-12T15:45:59.054Z"
+    },
+    {
+      "id": "memory-action-mqb3mbkk-305f2e",
+      "actionType": "Email Classified",
+      "objectType": "Email",
+      "objectId": "Vendor invoice",
+      "actor": "QA",
+      "status": "Success",
+      "details": "{\"classification\":\"Finance\",\"sender\":\"billing@vendor.com\"}",
+      "createdAt": "2026-06-12T15:45:59.060Z"
+    },
+    {
+      "id": "memory-action-mqb3mbkw-e69c02",
+      "actionType": "Email Received",
+      "objectType": "Email",
+      "objectId": "email-mqb3mbkj-22e388",
+      "actor": "QA",
+      "status": "Success",
+      "details": "{\"subject\":\"Vendor invoice\",\"threadId\":\"thread-billing-vendor-com-mqb3mbkj\",\"classification\":\"Finance\",\"status\":\"Received\",\"followUpStatus\":\"Awaiting Response\"}",
+      "createdAt": "2026-06-12T15:45:59.072Z"
+    },
+    {
+      "id": "memory-action-mqb3mbl4-00ff34",
+      "actionType": "Memory Created",
+      "objectType": "Memory",
+      "objectId": "memory-mqb3mbl3-daf3d6",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"memoryType\":\"Calendar Event\",\"tagCount\":3,\"projectLinks\":0,\"taskLinks\":0,\"contactLinks\":0}",
+      "createdAt": "2026-06-12T15:45:59.080Z"
+    },
+    {
+      "id": "memory-action-mqb3mblc-6b7d77",
+      "actionType": "Calendar Conflict Detected",
+      "objectType": "Calendar",
+      "objectId": "calendar-mqb3mbl1-4cadff",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"conflictCount\":1,\"conflicts\":[{\"eventId\":\"calendar-mqb3mbl1-4cadff\",\"conflictType\":\"Missing Deadline\",\"message\":\"Deadline appears overdue.\"}]}",
+      "createdAt": "2026-06-12T15:45:59.088Z"
+    },
+    {
+      "id": "memory-action-mqb3mbln-7dda82",
+      "actionType": "Calendar Event Created",
+      "objectType": "Calendar",
+      "objectId": "calendar-mqb3mbl1-4cadff",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"title\":\"Follow up: Vendor invoice\",\"date\":\"2026-06-07\",\"conflictCount\":1}",
+      "createdAt": "2026-06-12T15:45:59.099Z"
+    },
+    {
+      "id": "memory-action-mqb3mblu-c737de",
+      "actionType": "Email Classified",
+      "objectType": "Email",
+      "objectId": "Re: Vendor invoice",
+      "actor": "QA",
+      "status": "Success",
+      "details": "{\"classification\":\"Finance\",\"sender\":\"cole@averyindustries.com\"}",
+      "createdAt": "2026-06-12T15:45:59.106Z"
+    },
+    {
+      "id": "memory-action-mqb3mbm6-43a6ce",
+      "actionType": "Email Replied",
+      "objectType": "Email",
+      "objectId": "email-mqb3mblt-b0bbea",
+      "actor": "QA",
+      "status": "Success",
+      "details": "{\"subject\":\"Re: Vendor invoice\",\"threadId\":\"thread-billing-vendor-com-mqb3mbkj\",\"classification\":\"Finance\",\"status\":\"Replied\",\"followUpStatus\":\"None\"}",
+      "createdAt": "2026-06-12T15:45:59.118Z"
+    },
+    {
+      "id": "memory-action-mqb3mbmd-436754",
+      "actionType": "Email Classified",
+      "objectType": "Email",
+      "objectId": "Fwd: Vendor invoice",
+      "actor": "QA",
+      "status": "Success",
+      "details": "{\"classification\":\"Finance\",\"sender\":\"ATLAS\"}",
+      "createdAt": "2026-06-12T15:45:59.125Z"
+    },
+    {
+      "id": "memory-action-mqb3mbmr-b9d795",
+      "actionType": "Email Forwarded",
+      "objectType": "Email",
+      "objectId": "email-mqb3mbmc-89dd67",
+      "actor": "QA",
+      "status": "Success",
+      "details": "{\"subject\":\"Fwd: Vendor invoice\",\"threadId\":\"thread-billing-vendor-com-mqb3mbkj\",\"classification\":\"Finance\",\"status\":\"Forwarded\",\"followUpStatus\":\"None\"}",
+      "createdAt": "2026-06-12T15:45:59.139Z"
+    },
+    {
+      "id": "memory-action-mqb3mbmy-4c3dc5",
+      "actionType": "Email Read",
+      "objectType": "Email",
+      "objectId": "email-mqb3mbkj-22e388",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"subject\":\"Vendor invoice\"}",
+      "createdAt": "2026-06-12T15:45:59.146Z"
+    },
+    {
+      "id": "memory-action-mqb3mbn8-010326",
+      "actionType": "Email Read",
+      "objectType": "Email",
+      "objectId": "email-mqb3mbkj-22e388",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"subject\":\"Vendor invoice\"}",
+      "createdAt": "2026-06-12T15:45:59.156Z"
+    },
+    {
+      "id": "memory-action-mqb3mbnf-a070e2",
+      "actionType": "Email Classified",
+      "objectType": "Email",
+      "objectId": "Legal agreement review",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"classification\":\"Legal\",\"sender\":\"legal@advisor.com\"}",
+      "createdAt": "2026-06-12T15:45:59.163Z"
+    },
+    {
+      "id": "memory-action-mqb3mbnr-63a5f5",
+      "actionType": "Email Searched",
+      "objectType": "Email",
+      "objectId": "search",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"query\":\"invoice\",\"resultCount\":3}",
+      "createdAt": "2026-06-12T15:45:59.175Z"
+    },
+    {
+      "id": "memory-action-mqb3mbo7-2e2208",
+      "actionType": "Email Searched",
+      "objectType": "Email",
+      "objectId": "search",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"query\":\"\",\"resultCount\":1}",
+      "createdAt": "2026-06-12T15:45:59.191Z"
+    },
+    {
+      "id": "memory-action-mqb3mbod-08d73c",
+      "actionType": "Email Searched",
+      "objectType": "Email",
+      "objectId": "search",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"query\":\"\",\"resultCount\":1}",
+      "createdAt": "2026-06-12T15:45:59.197Z"
+    },
+    {
+      "id": "memory-action-mqb3mboj-a7bd2c",
+      "actionType": "Email Searched",
+      "objectType": "Email",
+      "objectId": "search",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"query\":\"\",\"resultCount\":3}",
+      "createdAt": "2026-06-12T15:45:59.203Z"
+    },
+    {
+      "id": "memory-action-mqb3mbop-1d7612",
+      "actionType": "Calendar Event Read",
+      "objectType": "Calendar",
+      "objectId": "today",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"count\":0,\"date\":\"2026-06-12\"}",
+      "createdAt": "2026-06-12T15:45:59.209Z"
+    },
+    {
+      "id": "memory-action-mqb3mbow-3143f0",
+      "actionType": "Email Follow-Up Detected",
+      "objectType": "Email",
+      "objectId": "follow-up",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"resultCount\":2}",
+      "createdAt": "2026-06-12T15:45:59.216Z"
+    },
+    {
+      "id": "memory-action-mqb3mbp6-411d29",
+      "actionType": "Memory Created",
+      "objectType": "Memory",
+      "objectId": "memory-mqb3mbp6-c914ef",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"memoryType\":\"Calendar Event\",\"tagCount\":3,\"projectLinks\":0,\"taskLinks\":0,\"contactLinks\":0}",
+      "createdAt": "2026-06-12T15:45:59.226Z"
+    },
+    {
+      "id": "memory-action-mqb3mbpm-5f8678",
+      "actionType": "Calendar Conflict Detected",
+      "objectType": "Calendar",
+      "objectId": "calendar-mqb3mbp4-cd28bb",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"conflictCount\":1,\"conflicts\":[{\"eventId\":\"calendar-mqb3mbp4-cd28bb\",\"conflictType\":\"Missing Deadline\",\"message\":\"Deadline appears overdue.\"}]}",
+      "createdAt": "2026-06-12T15:45:59.242Z"
+    },
+    {
+      "id": "memory-action-mqb3mbpw-ff0dc3",
+      "actionType": "Calendar Event Created",
+      "objectType": "Calendar",
+      "objectId": "calendar-mqb3mbp4-cd28bb",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"title\":\"Follow up: Grant approval request\",\"date\":\"2026-06-08\",\"conflictCount\":1}",
+      "createdAt": "2026-06-12T15:45:59.252Z"
+    },
+    {
+      "id": "memory-action-mqb3mbq2-6190fd",
+      "actionType": "Memory Created",
+      "objectType": "Memory",
+      "objectId": "memory-mqb3mbq2-59db93",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"memoryType\":\"Calendar Event\",\"tagCount\":3,\"projectLinks\":0,\"taskLinks\":0,\"contactLinks\":0}",
+      "createdAt": "2026-06-12T15:45:59.258Z"
+    },
+    {
+      "id": "memory-action-mqb3mbq8-fba4e5",
+      "actionType": "Calendar Conflict Detected",
+      "objectType": "Calendar",
+      "objectId": "calendar-mqb3mbq1-9ae2d4",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"conflictCount\":2,\"conflicts\":[{\"eventId\":\"calendar-mqb3mbq1-9ae2d4\",\"conflictType\":\"Overlap\",\"conflictingEventId\":\"calendar-mqb3mbl1-4cadff\",\"message\":\"Overlapping meetings detected.\"},{\"eventId\":\"calendar-mqb3mbq1-9ae2d4\",\"conflictType\":\"Missing Deadline\",\"message\":\"Deadline appears overdue.\"}]}",
+      "createdAt": "2026-06-12T15:45:59.264Z"
+    },
+    {
+      "id": "memory-action-mqb3mbqi-d5b6e2",
+      "actionType": "Calendar Event Created",
+      "objectType": "Calendar",
+      "objectId": "calendar-mqb3mbq1-9ae2d4",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"title\":\"Follow up: Vendor invoice\",\"date\":\"2026-06-07\",\"conflictCount\":2}",
+      "createdAt": "2026-06-12T15:45:59.274Z"
+    },
+    {
+      "id": "memory-action-mqb3mbqp-a370fb",
+      "actionType": "Calendar Event Searched",
+      "objectType": "Calendar",
+      "objectId": "Follow up:",
+      "actor": "ATLAS",
+      "status": "Success",
+      "details": "{\"query\":\"follow up:\",\"resultCount\":3}",
+      "createdAt": "2026-06-12T15:45:59.281Z"
+    },
+    {
+      "id": "memory-action-mqb3mbqx-b600a5",
+      "actionType": "Email Classified",
+      "objectType": "Email",
+      "objectId": "Temporary draft",
+      "actor": "QA",
+      "status": "Success",
+      "details": "{\"classification\":\"Client\",\"sender\":\"cole@averyindustries.com\"}",
+      "createdAt": "2026-06-12T15:45:59.289Z"
+    },
+    {
+      "id": "memory-action-mqb3mbr7-fe4110",
+      "actionType": "Email Drafted",
+      "objectType": "Email",
+      "objectId": "email-mqb3mbqw-90b635",
+      "actor": "QA",
+      "status": "Success",
+      "details": "{\"subject\":\"Temporary draft\",\"threadId\":\"thread-cole-averyindustries-com-mqb3mbqw\",\"classification\":\"Client\",\"status\":\"Draft\",\"followUpStatus\":\"None\"}",
+      "createdAt": "2026-06-12T15:45:59.299Z"
+    },
+    {
+      "id": "memory-action-mqb3mbre-d326c6",
+      "actionType": "Email Deleted",
+      "objectType": "Email",
+      "objectId": "email-mqb3mbqw-90b635",
+      "actor": "QA",
+      "status": "Success",
+      "details": "{\"subject\":\"Temporary draft\"}",
+      "createdAt": "2026-06-12T15:45:59.306Z"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ATLAS Command Center v1</title>
+  <meta name="color-scheme" content="dark">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <p class="eyebrow">Avery Industries LLC</p>
+        <h1>ATLAS Command Center v1</h1>
+        <p id="headline" class="headline">
+          One executive shell for ATLAS OS, approvals, revenue workflows, idea capture, and division control.
+        </p>
+      </div>
+      <div class="status-strip" aria-label="Workspace status">
+        <div class="metric">
+          <span class="metric-label">Company</span>
+          <strong id="company-name">Avery Industries LLC</strong>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Backend</span>
+          <strong id="backend-state">Mock data active</strong>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Approval rule</span>
+          <strong>Approval before send</strong>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Mode</span>
+          <strong>Executive dashboard</strong>
+        </div>
+      </div>
+    </header>
+
+    <nav id="primary-nav" class="primary-nav" aria-label="ATLAS primary navigation"></nav>
+
+    <main id="app" class="page"></main>
+
+    <footer class="footer">
+      <div id="route-list" class="route-list"></div>
+      <p>Local mock command center. It does not send, publish, spend, or deliver anything automatically.</p>
+    </footer>
+  </div>
+
+  <script src="./app.js" type="module"></script>
+</body>
+</html>

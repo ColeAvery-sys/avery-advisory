@@ -1,0 +1,854 @@
+import subprocess
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / "docs" / "business_portfolio"
+CHROME = Path(r"C:\Program Files\Google\Chrome\Application\chrome.exe")
+
+
+COMPANY = "Avery Industries LLC"
+DATE = "June 3, 2026"
+
+
+def main():
+    OUT.mkdir(parents=True, exist_ok=True)
+    packet_html = OUT / "avery_industries_business_portfolio_packet.html"
+    deck_html = OUT / "avery_industries_investor_presentation.html"
+    packet_pdf = OUT / "avery_industries_business_portfolio_packet.pdf"
+    deck_pdf = OUT / "avery_industries_investor_presentation.pdf"
+    markdown = OUT / "avery_industries_business_portfolio_packet.md"
+
+    packet_html.write_text(render_packet_html(), encoding="utf-8")
+    deck_html.write_text(render_deck_html(), encoding="utf-8")
+    markdown.write_text(render_markdown(), encoding="utf-8")
+
+    print_to_pdf(packet_html, packet_pdf)
+    print_to_pdf(deck_html, deck_pdf)
+
+    print(packet_pdf)
+    print(deck_pdf)
+
+
+def print_to_pdf(source: Path, target: Path):
+    if not CHROME.exists():
+        raise FileNotFoundError(f"Chrome not found: {CHROME}")
+    subprocess.run(
+        [
+            str(CHROME),
+            "--headless=new",
+            "--disable-gpu",
+            "--no-pdf-header-footer",
+            f"--print-to-pdf={target}",
+            source.resolve().as_uri(),
+        ],
+        check=True,
+    )
+
+
+def render_packet_html():
+    return f"""<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{COMPANY} Business Portfolio</title>
+  <style>
+    @page {{ size: Letter; margin: 0.42in; }}
+    * {{ box-sizing: border-box; }}
+    body {{
+      margin: 0;
+      color: #18202a;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f7fa;
+      line-height: 1.42;
+    }}
+    .page {{
+      min-height: 10in;
+      page-break-after: always;
+      background: white;
+      padding: 0.42in;
+      position: relative;
+      overflow: hidden;
+    }}
+    .cover {{
+      background: linear-gradient(135deg, #101827 0%, #1e344f 58%, #e9f1f7 58%, #ffffff 100%);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }}
+    .cover .brandmark {{
+      width: 72px;
+      height: 72px;
+      border: 2px solid rgba(255,255,255,0.76);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 30px;
+      letter-spacing: 1px;
+    }}
+    h1, h2, h3 {{ margin: 0; letter-spacing: 0; }}
+    h1 {{ font-size: 42px; line-height: 1.02; max-width: 600px; }}
+    h2 {{ font-size: 26px; color: #101827; margin-bottom: 14px; }}
+    h3 {{ font-size: 15px; color: #1e344f; margin-bottom: 6px; }}
+    .subtitle {{ font-size: 18px; max-width: 600px; opacity: 0.92; margin-top: 18px; }}
+    .meta {{ font-size: 12px; color: rgba(255,255,255,0.78); }}
+    .cover-card {{
+      color: #101827;
+      background: rgba(255,255,255,0.93);
+      border: 1px solid rgba(255,255,255,0.55);
+      padding: 22px;
+      width: 56%;
+      margin-left: auto;
+    }}
+    .kicker {{
+      text-transform: uppercase;
+      font-size: 10px;
+      font-weight: 700;
+      color: #516274;
+      letter-spacing: 1.2px;
+      margin-bottom: 8px;
+    }}
+    .grid {{ display: grid; gap: 14px; }}
+    .cols-2 {{ grid-template-columns: 1fr 1fr; }}
+    .cols-3 {{ grid-template-columns: 1fr 1fr 1fr; }}
+    .card {{
+      border: 1px solid #dce3ea;
+      background: #ffffff;
+      padding: 15px;
+      border-radius: 6px;
+    }}
+    .dark-card {{
+      background: #101827;
+      color: white;
+      border: 0;
+    }}
+    .dark-card h3 {{ color: #cde4f7; }}
+    .metric {{
+      border-left: 4px solid #2d6b88;
+      padding-left: 12px;
+    }}
+    .metric .num {{
+      font-size: 24px;
+      font-weight: 800;
+      color: #101827;
+    }}
+    .small {{ font-size: 11px; color: #657386; }}
+    .note {{ font-size: 11px; color: #516274; border-top: 1px solid #dce3ea; padding-top: 8px; margin-top: 12px; }}
+    ul {{ margin: 7px 0 0 18px; padding: 0; }}
+    li {{ margin: 4px 0; }}
+    table {{ width: 100%; border-collapse: collapse; font-size: 11px; }}
+    th {{ text-align: left; background: #101827; color: white; padding: 8px; }}
+    td {{ border-bottom: 1px solid #dce3ea; padding: 8px; vertical-align: top; }}
+    .tag {{
+      display: inline-block;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #e9f1f7;
+      color: #1e344f;
+      font-weight: 700;
+      font-size: 10px;
+      margin-right: 4px;
+    }}
+    .footer {{
+      position: absolute;
+      bottom: 0.22in;
+      left: 0.42in;
+      right: 0.42in;
+      display: flex;
+      justify-content: space-between;
+      color: #8b97a5;
+      font-size: 10px;
+      border-top: 1px solid #e5e9ee;
+      padding-top: 8px;
+    }}
+    .section-band {{
+      background: #e9f1f7;
+      border-left: 5px solid #2d6b88;
+      padding: 14px;
+      margin: 10px 0 14px;
+    }}
+    .warning {{
+      background: #fff8e6;
+      border: 1px solid #f2dd9f;
+      color: #4a3b00;
+      padding: 10px;
+      font-size: 11px;
+      border-radius: 5px;
+    }}
+    .scorebar {{
+      height: 8px;
+      background: #dce3ea;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 5px;
+    }}
+    .scorebar span {{
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, #2d6b88, #4d9a7f);
+    }}
+    .stat-strip {{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 12px 0;
+    }}
+    .stat {{
+      background: #101827;
+      color: white;
+      padding: 12px;
+      border-radius: 6px;
+      min-height: 84px;
+    }}
+    .stat strong {{
+      display: block;
+      font-size: 21px;
+      margin-bottom: 5px;
+      color: #cde4f7;
+    }}
+    .timeline {{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }}
+    .step {{
+      border-top: 4px solid #2d6b88;
+      background: #f7f9fb;
+      padding: 12px;
+      border-radius: 4px;
+    }}
+  </style>
+</head>
+<body>
+  {cover_page()}
+  {executive_overview_page()}
+  {company_structure_page()}
+  {ethical_ai_page()}
+  {market_strategy_page()}
+  {operating_system_page()}
+  {sustainable_compute_page()}
+  {market_data_page()}
+  {portfolio_page()}
+  {media_publishing_page()}
+  {interactive_collectibles_page()}
+  {portfolio_scorecard_page()}
+  {traction_page()}
+  {investment_page()}
+  {risk_page()}
+  {sources_page()}
+</body>
+</html>"""
+
+
+def page(title, body, subtitle=None):
+    subtitle_html = f"<div class='section-band'>{subtitle}</div>" if subtitle else ""
+    return f"""<section class="page">
+  <div class="kicker">Avery Industries Business Portfolio</div>
+  <h2>{title}</h2>
+  {subtitle_html}
+  {body}
+  <div class="footer"><span>{COMPANY}</span><span>Prepared {DATE}</span></div>
+</section>"""
+
+
+def cover_page():
+    return f"""<section class="page cover">
+  <div>
+    <div class="brandmark">AI</div>
+    <div style="margin-top: 80px;">
+      <div class="kicker" style="color:#cde4f7;">Business portfolio packet</div>
+      <h1>{COMPANY}</h1>
+      <div class="subtitle">An Ethical AI operating company building creator services, accessibility technology, rights-aware automation systems, and sustainable software infrastructure.</div>
+    </div>
+  </div>
+  <div class="cover-card">
+    <h3>Investment Narrative</h3>
+    <p>{COMPANY} is structured around one practical thesis: AI should help artists, developers, musicians, founders, and disabled users without exploiting their work, rights, or attention.</p>
+    <p class="small">Prepared for strategic review, investor conversations, grants, partnerships, and early stakeholder diligence.</p>
+  </div>
+  <div class="meta">Prepared {DATE} | Founder: Cole Avery | Confidential draft for review</div>
+</section>"""
+
+
+def executive_overview_page():
+    body = """
+    <div class="grid cols-3">
+      <div class="card metric"><div class="num">4</div><div>Near-term operating priorities</div><div class="small">ATLAS HQ, Creator Logistics, AveryTech, Marketing/PR</div></div>
+      <div class="card metric"><div class="num">8+</div><div>Long-term expansion lanes</div><div class="small">Media, publishing, music, collectibles, education, real estate, foundation, ventures</div></div>
+      <div class="card metric"><div class="num">1</div><div>Primary near-term cash engine</div><div class="small">Creator Logistics</div></div>
+    </div>
+    <div class="grid cols-2" style="margin-top:16px;">
+      <div class="card">
+        <h3>What the company is building</h3>
+        <ul>
+          <li>An Ethical AI company operating system called ATLAS.</li>
+          <li>A creator-services revenue division focused on editing, shorts, channel systems, and content operations.</li>
+          <li>Accessibility and executive-function software products under AveryTech.</li>
+          <li>A media, publishing, music, and entertainment portfolio that can compound into IP, audience, and education assets.</li>
+          <li>Rights-aware workflows that respect artists, game/software developers, musicians, and source ownership.</li>
+        </ul>
+      </div>
+      <div class="card dark-card">
+        <h3>Why this is investable</h3>
+        <ul>
+          <li>Near-term revenue is service-led, not dependent on speculative consumer adoption.</li>
+          <li>Ethical AI governance and owned/approved data policies reduce IP and trust risk.</li>
+          <li>Mission-driven accessibility products create grant and partnership potential.</li>
+          <li>Founder-led strategy is documented, structured, and approval-gated.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">This packet is not a securities offering document. Financial projections and investment terms should be prepared separately before any formal raise.</div>
+    """
+    return page("Executive Overview", body, "Avery Industries is being designed as a lean Ethical AI company: creator-respecting, developer-respecting, music-rights-aware, accessibility-focused, and built around human approval.")
+
+
+def company_structure_page():
+    body = """
+    <table>
+      <tr><th>Division</th><th>Role</th><th>Near-Term Priority</th><th>Long-Term Value</th></tr>
+      <tr><td>ATLAS HQ</td><td>Internal operating system</td><td>Executive dashboard, approvals, memory, task board, reporting</td><td>Company infrastructure and AI workforce coordination</td></tr>
+      <tr><td>Creator Logistics</td><td>Revenue engine</td><td>Editing services, shorts, thumbnails, upload management, client delivery</td><td>Recurring services revenue and creator-business pipeline</td></tr>
+      <tr><td>AveryTech</td><td>Ethical AI and accessibility technology</td><td>ATLAS OS, ATLAS Assist, EchoFrame, smart glasses tools</td><td>Accessibility software, SaaS, licensing, grants, pilots, partnerships</td></tr>
+      <tr><td>Marketing / PR / Advertising</td><td>Trust and growth layer</td><td>Brand management, social media, PR, press, advertising</td><td>Lead generation, recruiting, investor trust, audience growth</td></tr>
+      <tr><td>Avery Entertainment / Studio ColeTrain</td><td>Media and IP</td><td>Parked until revenue systems stabilize</td><td>Animation, original IP, games, YouTube, licensing, merch</td></tr>
+      <tr><td>Avery Publishing / Academy / Music</td><td>Education and creative catalog</td><td>Organize catalog and rights</td><td>Books, courses, audiobooks, soundtracks, licensing</td></tr>
+      <tr><td>Community Foundation / Real Estate / Ventures</td><td>Impact and infrastructure</td><td>Grant readiness and future planning</td><td>Community programs, property, investment, partnerships</td></tr>
+    </table>
+    <div class="section-band"><strong>Operating principle:</strong> revenue first, executive control second, AveryTech product validation third, then media, education, publishing, collectibles, real estate, and ventures after capacity exists.</div>
+    """
+    return page("Company Structure", body)
+
+
+def ethical_ai_page():
+    body = """
+    <div class="grid cols-2">
+      <div class="card dark-card">
+        <h3>Ethical AI thesis</h3>
+        <p>ATLAS is being positioned as an AI system built around consent, provenance, ownership, and human approval. The company goal is to make AI useful without treating artists, musicians, software developers, game developers, writers, or creators as disposable input sources.</p>
+      </div>
+      <div class="card">
+        <h3>Founder-created training foundation</h3>
+        <p>Cole Avery serves as CEO and AI engineer, building ATLAS around founder-created systems, company-authored workflows, internal documentation, owned IP, and approved materials. This reduces dependence on exploitative or unclear creative datasets.</p>
+      </div>
+      <div class="card">
+        <h3>Creative-rights operating model</h3>
+        <ul>
+          <li>Artist, developer, and musician rights are tracked before public or commercial use.</li>
+          <li>Client assets are not reused without permission.</li>
+          <li>Unknown rights block public/commercial deployment.</li>
+          <li>Generated assets are labeled, reviewed, and routed through approval gates.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Practical ethics, not slogans</h3>
+        <ul>
+          <li>No automated publishing, spending, customer messaging, grant submission, or contracts without Cole approval.</li>
+          <li>No unsupported public claims.</li>
+          <li>No medical, legal, financial, funding, or income guarantees.</li>
+          <li>No fake engagement, testimonials, reviews, or customers.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="warning"><strong>Diligence-safe claim:</strong> ATLAS should be described as an Ethical AI system by design and governance. Claims such as “the most ethical AI” should be reserved for future third-party validation, audits, or published evidence.</div>
+    """
+    return page("Ethical AI Positioning", body, "Avery Industries is building ATLAS around a rights-aware AI philosophy: creator-owned data, human approval, asset-rights tracking, and transparent governance.")
+
+
+def market_strategy_page():
+    body = """
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>Primary market entry: Creator Logistics</h3>
+        <p>Creators and small businesses have too much raw content and too little operational structure. Creator Logistics packages editing, short-form clipping, upload prep, asset organization, and content operations into service offers.</p>
+        <span class="tag">Fast revenue</span><span class="tag">Service-led</span><span class="tag">Repeatable</span>
+      </div>
+      <div class="card">
+        <h3>Product expansion: AveryTech</h3>
+        <p>AveryTech focuses on accessibility, executive dysfunction support, human-centered automation, and rights-aware AI tools. Products can be validated through pilots, internal use, creator workflows, and grant programs.</p>
+        <span class="tag">Mission fit</span><span class="tag">Grant potential</span><span class="tag">Ethical AI</span>
+      </div>
+      <div class="card">
+        <h3>Strategic media layer</h3>
+        <p>Founder-led content, thought leadership, and YouTube operations can build trust, generate leads, and support grant or partnership credibility.</p>
+      </div>
+      <div class="card">
+        <h3>Operational advantage</h3>
+        <p>ATLAS is built as the coordination layer across tasks, approvals, reports, memory, agents, departments, and asset-rights checks. This lowers management overhead while preserving human control.</p>
+      </div>
+    </div>
+    """
+    return page("Market Strategy", body)
+
+
+def operating_system_page():
+    body = """
+    <div class="grid cols-3">
+      <div class="card"><h3>Executive Control</h3><p>Daily briefings, approvals, priority arbitration, decision queues, and focus protection.</p></div>
+      <div class="card"><h3>Company Memory</h3><p>Shared decisions, SOPs, ideas, prompts, reports, and institutional knowledge.</p></div>
+      <div class="card"><h3>Agent Framework</h3><p>Agent registry, departments, task assignment, reporting, escalation rules, and human sovereignty controls.</p></div>
+      <div class="card"><h3>Revenue Ops</h3><p>Leads, proposals, client CRM, delivery tracking, and Creator Logistics workflows.</p></div>
+      <div class="card"><h3>Approval Gates</h3><p>No automated spend, customer contact, publishing, grants, hiring, or contracts without Cole approval.</p></div>
+      <div class="card"><h3>Rights and Provenance</h3><p>Asset rights, client ownership, public claims, and commercial-use permissions are tracked before use.</p></div>
+    </div>
+    <div class="section-band"><strong>Current system artifact:</strong> Avery Industries Master Task Board, Daily Executive Report System, Charter Engine, Agent Registry, Shared Memory, Approval Queue, Idea Vault, and Asset Rights operating model.</div>
+    """
+    return page("The ATLAS Operating System", body)
+
+
+def sustainable_compute_page():
+    body = """
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>Global-friendly data center roadmap</h3>
+        <p>Avery Industries’ long-term infrastructure plan is to avoid growth that creates unnecessary financial or environmental harm. The roadmap prioritizes efficient workloads, renewable power, right-sized compute, and distributed processing before large centralized expansion.</p>
+      </div>
+      <div class="card dark-card">
+        <h3>Solar-first infrastructure</h3>
+        <ul>
+          <li>Future data center capacity should be paired with solar farms or renewable-energy agreements where practical.</li>
+          <li>Compute expansion should be tied to actual revenue, user need, and mission impact.</li>
+          <li>Energy usage should be measured and reported before scale decisions.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Cooling innovation plan</h3>
+        <p>The company will research low-impact cooling options before committing to large facilities, including passive cooling, liquid cooling, heat reuse, modular thermal design, and location-aware data center planning.</p>
+      </div>
+      <div class="card">
+        <h3>Downsizing the data center</h3>
+        <p>Avery’s preferred long-term direction is to reduce centralized infrastructure pressure by moving appropriate workloads toward affordable local devices: home security hubs, home data centers, and personal servers that can provide private processing power at the edge.</p>
+      </div>
+    </div>
+    <div class="section-band"><strong>Infrastructure thesis:</strong> scale compute by making it cleaner, smaller, more distributed, and more user-owned before defaulting to massive centralized data centers.</div>
+    """
+    return page("Sustainable Compute and Data Center Strategy", body, "ATLAS should grow without causing avoidable global, environmental, or financial harm.")
+
+
+def market_data_page():
+    body = """
+    <div class="stat-strip">
+      <div class="stat"><strong>~2-3 min</strong>Typical investor deck attention is short, so the deck must be fast to understand.</div>
+      <div class="stat"><strong>415 TWh</strong>Estimated global data-center electricity use in 2024, according to IEA.</div>
+      <div class="stat"><strong>AI RMF</strong>NIST framework supports validity, safety, accountability, transparency, privacy, and fairness.</div>
+      <div class="stat"><strong>7 principles</strong>EU trustworthy AI guidance includes human oversight, privacy, transparency, and environmental wellbeing.</div>
+    </div>
+    <table>
+      <tr><th>Investor Need</th><th>Portfolio Response</th><th>Evidence / Artifact</th></tr>
+      <tr><td>Clear purpose</td><td>Ethical AI operating company for creator services, accessibility software, and sustainable compute.</td><td>Charter, corporate structure, portfolio packet.</td></tr>
+      <tr><td>Near-term revenue</td><td>Creator Logistics and Editor ColeTrain lead the cash-flow strategy.</td><td>Sales engines, lead systems, service workflows.</td></tr>
+      <tr><td>Defensible ethics</td><td>Founder-created/owned/approved training foundation and rights-aware operating model.</td><td>Approval gates, asset rights tracking, governance language.</td></tr>
+      <tr><td>Operational leverage</td><td>ATLAS HQ coordinates agents, tasks, reports, approvals, memory, and company knowledge.</td><td>Master Task Board, Daily Executive Report, agent modules.</td></tr>
+      <tr><td>Scalable mission</td><td>AveryTech targets accessibility tools, smart glasses support, executive function, and AI assistance.</td><td>ATLAS Assist, EchoFrame, research roadmap.</td></tr>
+    </table>
+    <div class="note">Deck improvement rule from investor research: make traction, business model, market logic, team, and ask obvious. Do not hide the current stage or overclaim adoption.</div>
+    """
+    return page("Research-Backed Investment Framing", body, "The upgraded portfolio is designed for fast investor comprehension, clear risk controls, and credible Ethical AI positioning.")
+
+
+def portfolio_page():
+    body = """
+    <table>
+      <tr><th>Asset</th><th>Category</th><th>Business Role</th><th>Status</th></tr>
+      <tr><td>ATLAS HQ / ATLAS OS</td><td>Internal OS</td><td>Coordinates tasks, agents, approvals, reports, and memory</td><td>Foundation built locally</td></tr>
+      <tr><td>Creator Logistics</td><td>Service division</td><td>Immediate revenue through creator and small-business content operations</td><td>Priority cash engine</td></tr>
+      <tr><td>ATLAS Command / Sprint Delta / ATLAS Hub</td><td>Operations software</td><td>Company command center, project management, dashboarding, and workflow control</td><td>Internal product direction</td></tr>
+      <tr><td>Bare Minimum Journal</td><td>Accessibility app</td><td>Low-friction journaling for executive dysfunction and low-energy days</td><td>MVP packet prepared</td></tr>
+      <tr><td>ATLAS Assist / EchoFrame</td><td>Accessibility software</td><td>Assistive planning, smart glasses support, executive-function tools, and AI assistance</td><td>Roadmap and research direction</td></tr>
+      <tr><td>Avery Media Network</td><td>Media layer</td><td>YouTube, podcasts, newsletters, creator brands, and public trust</td><td>Prioritized by cash and authority value</td></tr>
+      <tr><td>Avery Publishing / Music / Collectibles</td><td>IP monetization</td><td>Books, comics, soundtracks, merch, figures, plushes, and educational products</td><td>Future expansion after rights review</td></tr>
+    </table>
+    """
+    return page("Business Portfolio", body)
+
+
+def media_publishing_page():
+    body = """
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>Highest-priority media channels</h3>
+        <ul>
+          <li>Editor ColeTrain: fastest cash-flow channel for Creator Logistics.</li>
+          <li>Atlas Protocol: Ethical AI, AveryTech, accessibility, and future technology.</li>
+          <li>The New Prometheus: founder authority, philosophy, psychology, leadership, and purpose.</li>
+          <li>Creator Logistics: service proof, case studies, and client acquisition.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Publishing and education catalog</h3>
+        <ul>
+          <li>Black Halo: Volume I.</li>
+          <li>Eclipse Garden.</li>
+          <li>The New Prometheus.</li>
+          <li>The Atlas Protocol.</li>
+          <li>Designing for Different Minds.</li>
+          <li>Drawing with Dumpy.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Music portfolio</h3>
+        <p>Avery Music Group supports original artists, soundtrack work, publishing, sync licensing, and brand music.</p>
+        <span class="tag">Lord Dionysus</span><span class="tag">New Perspective</span><span class="tag">Broke John Lyric</span><span class="tag">Fandom Music Group</span>
+      </div>
+      <div class="card dark-card">
+        <h3>Investor-safe note</h3>
+        <p>The media, publishing, and music catalog is valuable as optionality, but it should not distract from Creator Logistics revenue and ATLAS/AveryTech execution.</p>
+      </div>
+    </div>
+    """
+    return page("Media, Publishing, and Music Portfolio", body, "Avery Industries has a broad creative catalog, but the professional execution strategy is to prioritize channels and products that support revenue, authority, and product trust.")
+
+
+def interactive_collectibles_page():
+    body = """
+    <table>
+      <tr><th>Category</th><th>Priority Projects</th><th>Business Role</th></tr>
+      <tr><td>Accessibility and AI apps</td><td>EchoFrame, ATLAS OS, ATLAS Assist, ATLAS Command</td><td>Core AveryTech product and grant/partnership lane</td></tr>
+      <tr><td>Business software</td><td>Creator Logistics CRM, Avery Industries Dashboard, Property Deal Finder</td><td>Revenue support and internal operational leverage</td></tr>
+      <tr><td>Experimental education</td><td>Aphantasia VR, Accessibility Academy Platform, Atlas Academy</td><td>Grant-friendly education and accessibility R&D</td></tr>
+      <tr><td>Games and IP</td><td>Road to Halvia, Black Halo RPG, Eclipse Arena, Crypid Cove</td><td>Future entertainment expansion after prototype validation</td></tr>
+      <tr><td>Collectibles</td><td>Echo Robot Plush, Avery Heroes modular figure system, Dumpy Plush, Hex Plush, Little Guy Plush</td><td>Future merchandise and physical-product lane after rights/prototype validation</td></tr>
+    </table>
+    <div class="section-band"><strong>Prototype rule:</strong> games, collectibles, hardware, and large software products should pass research, prototype, validation, and rights review before full investment.</div>
+    """
+    return page("Interactive Products and Collectibles", body)
+
+
+def portfolio_scorecard_page():
+    body = """
+    <table>
+      <tr><th>Asset / Division</th><th>Revenue</th><th>Strategic Value</th><th>Execution Priority</th></tr>
+      <tr><td>Creator Logistics</td><td><div class="scorebar"><span style="width:95%"></span></div></td><td><div class="scorebar"><span style="width:90%"></span></div></td><td>Build first</td></tr>
+      <tr><td>ATLAS HQ / ATLAS OS</td><td><div class="scorebar"><span style="width:70%"></span></div></td><td><div class="scorebar"><span style="width:100%"></span></div></td><td>Build first</td></tr>
+      <tr><td>AveryTech / ATLAS Assist / EchoFrame</td><td><div class="scorebar"><span style="width:80%"></span></div></td><td><div class="scorebar"><span style="width:100%"></span></div></td><td>Validate after revenue base</td></tr>
+      <tr><td>Editor ColeTrain</td><td><div class="scorebar"><span style="width:95%"></span></div></td><td><div class="scorebar"><span style="width:85%"></span></div></td><td>Build first</td></tr>
+      <tr><td>Atlas Protocol</td><td><div class="scorebar"><span style="width:85%"></span></div></td><td><div class="scorebar"><span style="width:100%"></span></div></td><td>Build for trust and product demand</td></tr>
+      <tr><td>The New Prometheus</td><td><div class="scorebar"><span style="width:80%"></span></div></td><td><div class="scorebar"><span style="width:95%"></span></div></td><td>Build for founder authority</td></tr>
+      <tr><td>Avery Publishing / Music / Entertainment</td><td><div class="scorebar"><span style="width:55%"></span></div></td><td><div class="scorebar"><span style="width:80%"></span></div></td><td>Park until cash systems stabilize</td></tr>
+      <tr><td>Collectibles / Physical Products</td><td><div class="scorebar"><span style="width:60%"></span></div></td><td><div class="scorebar"><span style="width:65%"></span></div></td><td>Prototype first</td></tr>
+    </table>
+    <div class="section-band"><strong>Analyst conclusion:</strong> the most investable version of Avery Industries is not “everything at once.” It is Creator Logistics cash flow plus ATLAS operating leverage plus AveryTech Ethical AI product upside.</div>
+    """
+    return page("Portfolio Scorecard", body)
+
+
+def traction_page():
+    body = """
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>Built operating assets</h3>
+        <ul>
+          <li>AI OS Charter and source-of-truth engine.</li>
+          <li>Master Task Board workbook and Apps Script generator.</li>
+          <li>Daily Executive Report System.</li>
+          <li>Agent, department, memory, approval, and idea-vault modules.</li>
+          <li>Revenue, creator logistics, product, content, and research backend modules.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Execution discipline</h3>
+        <ul>
+          <li>Roadmap expansion has been intentionally frozen.</li>
+          <li>Creator Logistics is prioritized as the first revenue engine.</li>
+          <li>High-risk actions are approval-gated.</li>
+          <li>ADHD-friendly navigation and daily reporting have been added.</li>
+          <li>Operating documentation is dated and indexed.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="warning"><strong>Investor diligence note:</strong> current traction is primarily system, architecture, and readiness traction. Customer revenue, signed contracts, and pilot outcomes should be documented separately as they occur.</div>
+    """
+    return page("Current Traction and Readiness", body)
+
+
+def investment_page():
+    body = """
+    <div class="grid cols-2">
+      <div class="card dark-card">
+        <h3>Near-term use of capital</h3>
+        <ul>
+          <li>Creator Logistics sales and delivery operations.</li>
+          <li>First Creator Logistics operations manager, editor, or contractor capacity.</li>
+          <li>ATLAS dashboard, database, and ethical AI governance implementation.</li>
+          <li>Client acquisition, portfolio proof, and case studies.</li>
+          <li>ATLAS Assist prototype, grant readiness, and sustainable compute planning.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Milestone plan</h3>
+        <div class="timeline">
+          <div class="step"><h3>0-30 days</h3><p>One clear Creator Logistics offer, lead pipeline, delivery tracker.</p></div>
+          <div class="step"><h3>30-90 days</h3><p>Paying clients, editor bench, operating dashboard.</p></div>
+          <div class="step"><h3>90-180 days</h3><p>ATLAS MVP, company memory, accessibility prototype plan.</p></div>
+          <div class="step"><h3>180+ days</h3><p>Grant packets, pilot programs, product validation, focused media expansion.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid cols-2" style="margin-top:14px;">
+      <div class="card">
+        <h3>What improves approval odds</h3>
+        <ul>
+          <li>First paying Creator Logistics customers.</li>
+          <li>One-page offer and repeatable delivery SOP.</li>
+          <li>Clear use of funds and milestone-based ask.</li>
+          <li>Proof that ATLAS reduces founder bottleneck.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>What should wait</h3>
+        <ul>
+          <li>Large games, large media slates, physical HQ, and broad collectibles production.</li>
+          <li>Formal claims that ATLAS is “the most ethical AI” until audited or validated.</li>
+          <li>Major data center expansion before workload, revenue, and energy evidence exist.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="section-band"><strong>Core investment thesis:</strong> fund the operating layer and revenue engine first, then use resulting cash flow and proof to de-risk ethical AI products, accessibility tools, media assets, and sustainable compute infrastructure.</div>
+    """
+    return page("Capital Strategy", body)
+
+
+def risk_page():
+    body = """
+    <table>
+      <tr><th>Risk</th><th>Mitigation</th></tr>
+      <tr><td>Founder bandwidth</td><td>Daily executive reports, Easy Mode decisions, approval queue, task board, and delegation systems.</td></tr>
+      <tr><td>Roadmap sprawl</td><td>Parked roadmap policy and current priority ladder centered on revenue and operating control.</td></tr>
+      <tr><td>Revenue uncertainty</td><td>Service-first Creator Logistics model before software-scale assumptions.</td></tr>
+      <tr><td>Automation risk</td><td>Approval gates for spending, outreach, publishing, grants, contracts, and hiring.</td></tr>
+      <tr><td>Accessibility claims</td><td>Evidence-before-expansion rule, pilots, outcome measurement, and no medical efficacy claims.</td></tr>
+      <tr><td>AI ethics claims</td><td>Use evidence-backed language: rights-aware, approval-gated, founder-created/owned/approved training foundation. Avoid unsupported superlatives until audited.</td></tr>
+      <tr><td>Compute sustainability</td><td>Stage infrastructure expansion through workload efficiency, renewable power planning, edge processing, and measured energy impact.</td></tr>
+      <tr><td>Execution capacity</td><td>Editor/contractor management and onboarding systems planned before broad product expansion.</td></tr>
+    </table>
+    <div class="note">Recommended next diligence packet: customer pipeline, first offer, pricing model, proof of delivery workflow, and 90-day cash plan.</div>
+    """
+    return page("Risk Controls and Governance", body)
+
+
+def sources_page():
+    body = """
+    <table>
+      <tr><th>Source</th><th>Used For</th><th>Link</th></tr>
+      <tr><td>Sequoia pitch deck framework</td><td>Deck structure: purpose, problem, solution, why now, market, product, business model, team, financials.</td><td>https://www.slideshare.net/PitchDeckCoach/sequoia-capital-pitchdecktemplate</td></tr>
+      <tr><td>Y Combinator seed fundraising guide</td><td>Emphasis on product, adoption, and traction before fundraising.</td><td>https://www.ycombinator.com/blog/how-to-raise-a-seed-round/</td></tr>
+      <tr><td>DocSend pitch deck metrics</td><td>Investor attention is short; deck must be skimmable and high-signal.</td><td>https://www.docsend.com/pitch-deck-metrics/</td></tr>
+      <tr><td>NIST AI Risk Management Framework</td><td>Trustworthy AI framing: valid, reliable, safe, secure, accountable, transparent, privacy-enhanced, fair.</td><td>https://www.nist.gov/itl/ai-risk-management-framework</td></tr>
+      <tr><td>European Commission Trustworthy AI Guidelines</td><td>Human oversight, privacy, transparency, accountability, and societal/environmental wellbeing.</td><td>https://digital-strategy.ec.europa.eu/en/library/ethics-guidelines-trustworthy-ai</td></tr>
+      <tr><td>International Energy Agency</td><td>Data centers and energy demand framing, including estimated 2024 data-center electricity use.</td><td>https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai</td></tr>
+    </table>
+    <div class="warning"><strong>Use in investor conversations:</strong> cite these as strategic references, not as proof of Avery Industries traction. Company traction must be documented separately through customers, revenue, pilots, partnerships, or audited results.</div>
+    """
+    return page("Research References", body)
+
+
+def render_deck_html():
+    slides = [
+        ("Avery Industries LLC", "Ethical AI operating company for creator services, accessibility software, rights-aware automation, and sustainable compute.", "Business Portfolio Presentation"),
+        ("The Problem", "Artists, musicians, developers, creators, and disabled users need AI that helps without exploiting their work, rights, energy, or attention.", "Market pain"),
+        ("The Company", "Avery Industries combines service revenue, Ethical AI operations, accessibility products, media, publishing, music, and community impact under one operating system.", "Company thesis"),
+        ("Revenue First", "Creator Logistics is the first cash engine: editing, short-form clipping, upload prep, creator operations, and content workflow support.", "Go-to-market"),
+        ("Ethical AI by Design", "ATLAS is built around founder-created, company-owned, licensed, or approved materials; asset-rights tracking; and human approval gates.", "AI governance"),
+        ("ATLAS Operating System", "ATLAS coordinates agents, tasks, approvals, memory, reports, leads, decisions, rights checks, and company knowledge.", "Operational moat"),
+        ("AveryTech Mission", "Accessibility tools including ATLAS Assist, Bare Minimum Journal, EchoFrame concepts, and executive-function support software.", "Mission-driven product line"),
+        ("Portfolio Breadth", "Avery Industries includes ATLAS HQ, Creator Logistics, AveryTech, Studio ColeTrain, Avery Media Network, Avery Publishing, Avery Music Group, and future collectibles.", "Corporate structure"),
+        ("Media Priority", "Editor ColeTrain, Atlas Protocol, The New Prometheus, and Creator Logistics are the highest-priority channels because they support cash flow, trust, and product credibility.", "Media strategy"),
+        ("Sustainable Compute", "The long-term infrastructure plan favors solar-backed capacity, cooling innovation, workload efficiency, edge processing, and affordable home data-center appliances.", "Infrastructure strategy"),
+        ("Current Build Assets", "Charter, Master Task Board, Daily Executive Report, Agent Registry, Approval Queue, Shared Memory, Idea Vault, and 300+ backend modules.", "Infrastructure readiness"),
+        ("Why Invest", "Capital supports the revenue engine, contractor capacity, ATLAS dashboard, ethical AI governance, client acquisition, and accessibility prototype readiness.", "Capital logic"),
+        ("Milestones", "30 days: offer and leads. 90 days: clients and editor bench. 180 days: ATLAS MVP and accessibility prototype plan.", "Execution path"),
+        ("Governance", "Cole retains final approval. ATLAS drafts and recommends but cannot spend, contact, publish, hire, submit, or sign without approval.", "Risk control"),
+    ]
+    body = "\n".join(slide(title, text, kicker) for title, text, kicker in slides)
+    return f"""<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{COMPANY} Investor Presentation</title>
+  <style>
+    @page {{ size: Letter landscape; margin: 0; }}
+    * {{ box-sizing: border-box; }}
+    body {{ margin: 0; font-family: Arial, Helvetica, sans-serif; background: #0f1724; color: #17202b; }}
+    .slide {{
+      width: 11in;
+      height: 8.5in;
+      page-break-after: always;
+      padding: 0.58in;
+      background:
+        linear-gradient(115deg, #ffffff 0%, #ffffff 62%, #e9f1f7 62%, #cdddea 100%);
+      position: relative;
+      overflow: hidden;
+    }}
+    .slide:before {{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0.18in;
+      height: 100%;
+      background: #1e344f;
+    }}
+    .kicker {{ color: #2d6b88; font-weight: 800; text-transform: uppercase; letter-spacing: 1.1px; font-size: 13px; }}
+    h1 {{ font-size: 54px; line-height: 1.02; margin: 1.1in 0 0.24in; max-width: 7.4in; letter-spacing: 0; }}
+    p {{ font-size: 25px; line-height: 1.28; max-width: 7.9in; margin: 0; color: #354252; }}
+    .accent {{
+      position: absolute;
+      right: -0.3in;
+      bottom: -0.3in;
+      width: 3.2in;
+      height: 3.2in;
+      border: 24px solid rgba(45,107,136,0.14);
+      border-radius: 50%;
+    }}
+    .deck-note {{
+      position: absolute;
+      top: 1.25in;
+      right: 0.58in;
+      width: 2.25in;
+      padding: 14px;
+      background: rgba(16,24,39,0.92);
+      color: white;
+      font-size: 13px;
+      line-height: 1.35;
+      border-radius: 6px;
+    }}
+    .footer {{ position: absolute; bottom: 0.35in; left: 0.58in; right: 0.58in; display: flex; justify-content: space-between; color: #7d8a99; font-size: 12px; }}
+    .mark {{ position: absolute; top: 0.48in; right: 0.58in; border: 2px solid #1e344f; width: 58px; height: 58px; display: grid; place-items: center; font-weight: 800; color: #1e344f; }}
+  </style>
+</head>
+<body>{body}</body>
+</html>"""
+
+
+def slide(title, text, kicker):
+    return f"""<section class="slide">
+  <div class="accent"></div>
+  <div class="mark">AI</div>
+  <div class="kicker">{kicker}</div>
+  <h1>{title}</h1>
+  <p>{text}</p>
+  <div class="deck-note">Ethical AI | Creator economy | Accessibility tech | Sustainable compute</div>
+  <div class="footer"><span>{COMPANY}</span><span>{DATE}</span></div>
+</section>"""
+
+
+def render_markdown():
+    return f"""# {COMPANY} Business Portfolio Packet
+
+Prepared: {DATE}
+
+## Executive Summary
+
+{COMPANY} is an Ethical AI operating company building creator services, accessibility technology, rights-aware automation systems, and sustainable software infrastructure.
+
+The near-term commercial focus is Creator Logistics, a service division for video editing, short-form content, upload preparation, channel systems, and creator operations.
+
+The long-term platform is ATLAS, an internal company operating system coordinating tasks, agents, approvals, memory, reports, leads, rights checks, and executive decisions.
+
+ATLAS is being designed around founder-created, company-owned, licensed, or approved materials so the company can build AI systems that respect artists, game/software developers, musicians, writers, clients, and creators.
+
+## Investment Thesis
+
+- Service revenue first through Creator Logistics.
+- Ethical AI governance, asset-rights tracking, and founder-led data practices reduce IP and trust risk.
+- Accessibility products create mission alignment, grant potential, and defensible product direction.
+- Founder-led governance is documented and approval-gated.
+- Sustainable compute planning can reduce infrastructure risk as the company scales.
+
+## Ethical AI Positioning
+
+ATLAS should be positioned as Ethical AI by design:
+
+- Built around founder-created, company-authored, owned, licensed, or approved materials.
+- Designed to respect artists, game developers, software developers, musicians, writers, and creators.
+- Public/commercial assets require rights review.
+- Client assets cannot be reused without permission.
+- Unknown rights block public/commercial deployment.
+- Cole Avery remains final approval authority for risky actions.
+
+The company should avoid unsupported claims such as “the most ethical AI” until future audits, third-party validation, or published evidence supports that language.
+
+## Sustainable Compute and Data Center Strategy
+
+The long-term infrastructure plan is to expand compute capacity without creating avoidable environmental or financial harm:
+
+- Solar-backed data center capacity where practical.
+- Research into low-impact cooling, passive cooling, liquid cooling, heat reuse, and modular thermal design.
+- Workload efficiency before infrastructure expansion.
+- Edge processing through affordable home security / home data center / home server appliances.
+- A goal of reducing reliance on massive centralized data centers where smaller distributed compute can work.
+
+## Core Divisions
+
+- ATLAS Systems: internal operating system.
+- Creator Logistics: revenue engine.
+- AveryTech: accessibility and executive-function software.
+- Marketing, Public Relations, and Advertising: trust, visibility, and lead generation.
+- Avery Entertainment and Studio ColeTrain: future IP, media, animation, and production.
+- Avery Publishing, Avery Academy, and Avery Music Group: education, books, music, and licensing.
+- Avery Community Foundation, Real Estate, and Avery Ventures: future impact, infrastructure, and investment lanes.
+
+## Priority Media Channels
+
+- Editor ColeTrain: cash flow and Creator Logistics leads.
+- Atlas Protocol: AveryTech and Ethical AI positioning.
+- The New Prometheus: founder authority and philosophy.
+- Creator Logistics: service proof and acquisition.
+
+## Priority Product and IP Assets
+
+- EchoFrame.
+- ATLAS OS.
+- ATLAS Assist.
+- Creator Logistics CRM.
+- Black Halo.
+- Eclipse Garden.
+- Road to Halvia.
+- Designing for Different Minds.
+- Echo Robot Plush.
+- Avery Heroes modular figure system.
+
+## Current Readiness
+
+- AI OS Charter.
+- Master Task Board workbook and Google Apps Script generator.
+- Daily Executive Report System.
+- Agent Registry, Approval Queue, Shared Memory, and Idea Vault.
+- ADHD-friendly file and systems indexes.
+
+## Capital Strategy
+
+Capital should prioritize Creator Logistics sales, editor/contractor capacity, ATLAS dashboard implementation, Ethical AI governance, client acquisition, accessibility prototype readiness, and sustainable compute planning.
+
+## Risk Controls
+
+ATLAS cannot spend money, contact customers, publish, submit grants, hire contractors, sign documents, or make public claims without Cole approval.
+
+## Approval Odds Strategy
+
+To improve investor, partner, grant, or lender approval odds, Avery Industries should lead with:
+
+- A clear Creator Logistics revenue offer.
+- Evidence of paying clients or serious leads.
+- ATLAS as operational leverage, not as a vague AI promise.
+- Ethical AI governance tied to NIST AI RMF and EU Trustworthy AI principles.
+- A staged sustainable compute plan that prioritizes efficiency, renewable power, and edge processing.
+- A focused hiring plan: Creator Logistics Operations Manager, Marketing / Content Coordinator, AveryTech Developer, Administrative Assistant.
+
+## Research References
+
+- Sequoia-style deck structure: company purpose, problem, solution, market, product, business model, team, and financials.
+- Y Combinator fundraising guidance: investors expect product, adoption, and traction.
+- DocSend pitch deck metrics: investor attention is short, so decks must be skimmable.
+- NIST AI Risk Management Framework: trustworthy AI risk-management characteristics.
+- European Commission Trustworthy AI Guidelines: human oversight, privacy, transparency, accountability, and environmental wellbeing.
+- International Energy Agency: AI and data centers are an energy strategy issue.
+
+This packet is not a securities offering document. Formal financial projections, investment terms, and legal review should be prepared separately before any investment transaction.
+"""
+
+
+if __name__ == "__main__":
+    main()

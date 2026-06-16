@@ -1,0 +1,11 @@
+Write-Host "ATLAS Command Center local helper" -ForegroundColor Cyan
+Write-Host "Local app: http://localhost:8788/dashboard"
+Write-Host ""
+Write-Host "Start the command center:"
+Write-Host "  npm run atlas:command-center"
+Write-Host ""
+Write-Host "Primary verification command:"
+Write-Host "  npm test"
+Write-Host ""
+Write-Host "Health endpoint:"
+Write-Host "  http://localhost:8788/api/health"

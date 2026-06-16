@@ -1,0 +1,567 @@
+{
+  "company": {
+    "parent": "Avery Industries LLC",
+    "brand": "ATLAS Command Center",
+    "tagline": "Professional AI operations for revenue, approvals, ideas, and division control.",
+    "mode": "Mock backend active until real APIs are connected."
+  },
+  "routes": [
+    {
+      "path": "/dashboard",
+      "label": "Dashboard",
+      "description": "Executive snapshot"
+    },
+    {
+      "path": "/idea-vault",
+      "label": "Idea Vault",
+      "description": "Capture and score ideas"
+    },
+    {
+      "path": "/leads",
+      "label": "Leads",
+      "description": "Revenue pipeline"
+    },
+    {
+      "path": "/content-ops",
+      "label": "Content Ops",
+      "description": "Drafts and publishing queue"
+    },
+    {
+      "path": "/grants",
+      "label": "Grants",
+      "description": "Grant readiness and submissions"
+    },
+    {
+      "path": "/creator-logistics",
+      "label": "Creator Logistics",
+      "description": "Client delivery and operations"
+    },
+    {
+      "path": "/divisions",
+      "label": "Divisions",
+      "description": "Company structure"
+    },
+    {
+      "path": "/settings",
+      "label": "Settings",
+      "description": "Config and integrations"
+    },
+    {
+      "path": "/approval-queue",
+      "label": "Approval Queue",
+      "description": "Items waiting on approval"
+    }
+  ],
+  "statusBadges": [
+    "Draft",
+    "Pending Approval",
+    "Approved",
+    "Sent",
+    "Blocked"
+  ],
+  "ideas": [
+    {
+      "id": "idea-1",
+      "title": "Executive morning brief with auto-priority scoring",
+      "source": "ATLAS note",
+      "value": "Medium",
+      "effort": "Medium",
+      "status": "Draft",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    },
+    {
+      "id": "idea-2",
+      "title": "Creator Logistics referral follow-up automation",
+      "source": "Revenue note",
+      "value": "Medium",
+      "effort": "Medium",
+      "status": "Pending Approval",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    },
+    {
+      "id": "idea-3",
+      "title": "AveryTech accessibility pilot for caregivers",
+      "source": "Grant note",
+      "value": "Medium",
+      "effort": "Medium",
+      "status": "Approved",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    },
+    {
+      "id": "idea-1780791162061-155a8c210ccf9",
+      "title": "Smoke idea",
+      "rawNote": "Test",
+      "category": "Ops",
+      "urgency": 3,
+      "revenuePotential": 3,
+      "relatedDivision": "ATLAS OS",
+      "source": "manual",
+      "status": "Draft",
+      "createdAt": "2026-06-07T00:12:42.061Z",
+      "updatedAt": "2026-06-07T00:12:42.061Z",
+      "distribution": {
+        "contentIdeas": [],
+        "productIdeas": [
+          "Prototype \"Smoke idea\" as a small product or workflow."
+        ],
+        "marketingAngles": [
+          "Founder update: why Smoke idea matters."
+        ],
+        "grantOpportunities": [],
+        "socialPosts": [],
+        "codexTasks": [
+          "Define a data model and acceptance checklist."
+        ],
+        "cursorTasks": [
+          "Create the first UI shell and route map."
+        ],
+        "salesOffers": [],
+        "risks": [],
+        "nextAction": "Define a data model and acceptance checklist."
+      },
+      "history": [
+        {
+          "action": "Created",
+          "actor": "ATLAS",
+          "note": "Idea captured",
+          "status": "Draft",
+          "timestamp": "2026-06-07T00:12:42.061Z"
+        }
+      ]
+    }
+  ],
+  "leads": [
+    {
+      "id": "lead-1",
+      "name": "Leo Media",
+      "stage": "Discovery",
+      "value": "$2,400",
+      "status": "Draft",
+      "platform": "",
+      "url": "",
+      "niche": "",
+      "fitScore": 0,
+      "painPoints": [],
+      "offerMatch": "",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    },
+    {
+      "id": "lead-2",
+      "name": "Dani Creative",
+      "stage": "Proposal Ready",
+      "value": "$3,500",
+      "status": "Pending Approval",
+      "platform": "",
+      "url": "",
+      "niche": "",
+      "fitScore": 0,
+      "painPoints": [],
+      "offerMatch": "",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    },
+    {
+      "id": "lead-3",
+      "name": "Safe Place Server",
+      "stage": "Follow-up",
+      "value": "$1,200",
+      "status": "Approved",
+      "platform": "",
+      "url": "",
+      "niche": "",
+      "fitScore": 0,
+      "painPoints": [],
+      "offerMatch": "",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    },
+    {
+      "id": "lead-4",
+      "name": "Apollo referral",
+      "stage": "Closed Won",
+      "value": "$6,800",
+      "status": "Sent",
+      "platform": "",
+      "url": "",
+      "niche": "",
+      "fitScore": 0,
+      "painPoints": [],
+      "offerMatch": "",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    },
+    {
+      "id": "lead-1780791161927-434fd014629c3",
+      "name": "Smoke Lead",
+      "platform": "YouTube",
+      "url": "",
+      "niche": "Editing",
+      "fitScore": 6,
+      "painPoints": [
+        "editing",
+        "shorts"
+      ],
+      "offerMatch": "Channel Expansion System",
+      "status": "Draft",
+      "stage": "Discovery",
+      "value": "$0",
+      "createdAt": "2026-06-07T00:12:41.927Z",
+      "updatedAt": "2026-06-07T00:12:41.927Z",
+      "history": [
+        {
+          "action": "Created",
+          "actor": "ATLAS",
+          "note": "Lead captured",
+          "status": "Draft",
+          "timestamp": "2026-06-07T00:12:41.927Z"
+        }
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "task-cl-1",
+      "title": "Short-form clip batch",
+      "owner": "Dani",
+      "priority": "Pending Approval",
+      "status": "Pending Approval",
+      "due": "Today",
+      "area": "Creator Logistics",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    },
+    {
+      "id": "task-cl-2",
+      "title": "Edited intro package",
+      "owner": "Leo",
+      "priority": "Approved",
+      "status": "Approved",
+      "due": "Tomorrow",
+      "area": "Creator Logistics",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    },
+    {
+      "id": "task-cl-3",
+      "title": "Systems online message draft",
+      "owner": "Apollo",
+      "priority": "Draft",
+      "status": "Draft",
+      "due": "Today",
+      "area": "Creator Logistics",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    },
+    {
+      "id": "task-cl-4",
+      "title": "Delivery checklist",
+      "owner": "Internal",
+      "priority": "Blocked",
+      "status": "Blocked",
+      "due": "Waiting on backend",
+      "area": "Creator Logistics",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    }
+  ],
+  "divisions": [
+    {
+      "name": "AveryTech",
+      "purpose": "Disability-aid tools, automation, and accessibility products.",
+      "status": "Active",
+      "owner": "Guide"
+    },
+    {
+      "name": "ATLAS OS",
+      "purpose": "Company command system, approvals, memory, and routing.",
+      "status": "Active",
+      "owner": "ATLAS Prime"
+    },
+    {
+      "name": "Creator Logistics",
+      "purpose": "Lead generation, editing services, client delivery, and revenue ops.",
+      "status": "Active",
+      "owner": "Broker"
+    },
+    {
+      "name": "Avery Entertainment",
+      "purpose": "IP, media, comics, games, and stories.",
+      "status": "Strategic",
+      "owner": "Apollo"
+    },
+    {
+      "name": "Avery Music Group",
+      "purpose": "Music production, audio publishing, and releases.",
+      "status": "Strategic",
+      "owner": "Apollo"
+    },
+    {
+      "name": "Avery Collectibles",
+      "purpose": "Merch, physical collectibles, and limited product drops.",
+      "status": "Strategic",
+      "owner": "Mercury"
+    },
+    {
+      "name": "Avery Academy",
+      "purpose": "Training, education, courses, and internal SOP learning.",
+      "status": "Strategic",
+      "owner": "Archivist"
+    },
+    {
+      "name": "Avery Community Foundation",
+      "purpose": "Community support, accessibility, and impact programs.",
+      "status": "Strategic",
+      "owner": "Lantern"
+    },
+    {
+      "name": "Apollo Athletics",
+      "purpose": "Movement, training, fitness, and performance products.",
+      "status": "Strategic",
+      "owner": "Forge"
+    },
+    {
+      "name": "Apollo Apparel",
+      "purpose": "Wearables, apparel, and branded lifestyle products.",
+      "status": "Strategic",
+      "owner": "Forge"
+    },
+    {
+      "name": "Apollo Nutrition",
+      "purpose": "Nutrition, supplements, and wellness products.",
+      "status": "Strategic",
+      "owner": "Forge"
+    },
+    {
+      "name": "Apollo Training",
+      "purpose": "Training systems, coaching, and skill development.",
+      "status": "Strategic",
+      "owner": "Forge"
+    },
+    {
+      "name": "Apollo Recovery",
+      "purpose": "Recovery, rest, and disability-support workflows.",
+      "status": "Strategic",
+      "owner": "Sentinel"
+    }
+  ],
+  "contentPackages": [
+    {
+      "id": "content-1",
+      "title": "Weekly ATLAS update",
+      "owner": "ATLAS OS",
+      "channel": "Internal",
+      "status": "Draft",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    },
+    {
+      "id": "content-2",
+      "title": "Creator Logistics clip batch",
+      "owner": "Creator Logistics",
+      "channel": "Client",
+      "status": "Pending Approval",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    },
+    {
+      "id": "content-3",
+      "title": "Founder essay outline",
+      "owner": "AveryTech",
+      "channel": "Public",
+      "status": "Approved",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    },
+    {
+      "id": "content-4",
+      "title": "Grant explainer video",
+      "owner": "Avery Community Foundation",
+      "channel": "Grant",
+      "status": "Blocked",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    }
+  ],
+  "grants": [
+    {
+      "id": "grant-1",
+      "title": "Accessibility pilot grant",
+      "agency": "State program",
+      "stage": "Draft",
+      "status": "Draft",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    },
+    {
+      "id": "grant-2",
+      "title": "Assistive tech evidence packet",
+      "agency": "Foundations",
+      "stage": "Review",
+      "status": "Pending Approval",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    },
+    {
+      "id": "grant-3",
+      "title": "Community support microgrant",
+      "agency": "Local fund",
+      "stage": "Submitted",
+      "status": "Sent",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    }
+  ],
+  "approvalQueue": [
+    {
+      "id": "approval-1",
+      "title": "Creator Logistics proposal to Dani",
+      "reason": "Outbound client deliverable",
+      "status": "Pending Approval",
+      "collection": "contentPackages",
+      "itemId": "",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    },
+    {
+      "id": "approval-2",
+      "title": "Grant response draft",
+      "reason": "External submission",
+      "status": "Draft",
+      "collection": "grants",
+      "itemId": "",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    },
+    {
+      "id": "approval-3",
+      "title": "Apollo reply message",
+      "reason": "Outbound DM",
+      "status": "Blocked",
+      "collection": "leads",
+      "itemId": "",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    },
+    {
+      "id": "approval-4",
+      "title": "Content post for public channel",
+      "reason": "Public posting",
+      "status": "Approved",
+      "collection": "contentPackages",
+      "itemId": "",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    },
+    {
+      "id": "approval-5",
+      "title": "Invoice follow-up",
+      "reason": "Money-moving action",
+      "status": "Pending Approval",
+      "collection": "leads",
+      "itemId": "",
+      "createdAt": "2026-06-07T00:12:41.926Z",
+      "updatedAt": "2026-06-07T00:12:41.926Z"
+    },
+    {
+      "id": "approval-1780791162056-a325544fe10de",
+      "title": "Outreach drafts for Smoke Lead",
+      "type": "DM",
+      "division": "Creator Logistics",
+      "generatedContent": "{\n  \"emailDraft\": \"Hi Smoke Lead, ATLAS noticed your YouTube and thinks Channel Expansion System may be a fit. This is a draft pending approval.\",\n  \"dmDraft\": \"Hey Smoke Lead, I noticed your work and drafted a Creator Logistics approach. Cole will review before anything is sent.\",\n  \"followUpDraft\": \"Quick follow-up draft for Smoke Lead: stay warm, keep it short, and wait for approval.\",\n  \"proposalSummary\": \"Smoke Lead appears to fit Channel Expansion System. Fit score: 6/10.\",\n  \"approvalRequired\": true,\n  \"offer\": \"Channel Expansion System\",\n  \"revenuePotential\": \"$7,500/mo\"\n}",
+      "riskLevel": "Medium",
+      "revenuePotential": "$7,500/mo",
+      "status": "Pending Approval",
+      "history": [
+        {
+          "action": "Created",
+          "actor": "ATLAS",
+          "note": "Approval queued",
+          "status": "Pending Approval",
+          "timestamp": "2026-06-07T00:12:42.057Z"
+        }
+      ],
+      "collection": "leads",
+      "itemId": "lead-1780791161927-434fd014629c3",
+      "createdAt": "2026-06-07T00:12:42.056Z",
+      "updatedAt": "2026-06-07T00:12:42.056Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "audit-1780791161927-115f4324a1be1",
+      "eventType": "Item Created",
+      "collection": "leads",
+      "itemId": "lead-1780791161927-434fd014629c3",
+      "itemLabel": "Smoke Lead",
+      "actor": "ATLAS",
+      "timestamp": "2026-06-07T00:12:41.927Z",
+      "note": "Lead captured"
+    },
+    {
+      "id": "audit-1780791162057-a7c8e81f659b3",
+      "eventType": "Item Created",
+      "collection": "approvalQueue",
+      "itemId": "approval-1780791162056-a325544fe10de",
+      "itemLabel": "Outreach drafts for Smoke Lead",
+      "actor": "ATLAS",
+      "timestamp": "2026-06-07T00:12:42.057Z",
+      "note": "Approval queued"
+    },
+    {
+      "id": "audit-1780791162061-f1082d355069",
+      "eventType": "Item Created",
+      "collection": "ideas",
+      "itemId": "idea-1780791162061-155a8c210ccf9",
+      "itemLabel": "Smoke idea",
+      "actor": "ATLAS",
+      "timestamp": "2026-06-07T00:12:42.061Z",
+      "note": "Idea captured"
+    }
+  ],
+  "guardrails": [
+    "Never auto-send emails, DMs, proposals, or deliverables without approval.",
+    "Keep approvals, logging, and draft history visible at all times.",
+    "Use Avery Industries LLC everywhere.",
+    "Keep the UI dense, simple, mobile-friendly, and executive-grade."
+  ],
+  "connections": [
+    {
+      "system": "CRM",
+      "status": "Mock only",
+      "note": "Needs a real database or API."
+    },
+    {
+      "system": "Approvals",
+      "status": "Mock only",
+      "note": "Needs persistent approval workflow storage."
+    },
+    {
+      "system": "Email / DM sending",
+      "status": "Blocked",
+      "note": "Must remain approval-gated."
+    },
+    {
+      "system": "File storage",
+      "status": "Mock only",
+      "note": "Needs backend file sync."
+    },
+    {
+      "system": "Analytics",
+      "status": "Mock only",
+      "note": "Needs real event tracking."
+    }
+  ],
+  "backendGaps": [
+    "Persistent database for tasks, approvals, leads, and notes.",
+    "Real CRM and lead source integrations.",
+    "Email and DM connectors with approval workflow storage.",
+    "Grant document storage and submission tracking.",
+    "Content publishing API integrations.",
+    "Analytics and event logging backend.",
+    "Authentication and user permissions."
+  ]
+}

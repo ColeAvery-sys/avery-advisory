@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  font-family: "Inter", "Space Grotesk", "Segoe UI", sans-serif;
+  background: #020617;
+  color: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top, rgba(37, 99, 235, 0.18), transparent 28%),
+    radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.14), transparent 24%),
+    linear-gradient(180deg, #020617 0%, #030712 48%, #020617 100%);
+  color: #ffffff;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.35);
+  color: #ffffff;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.04em;
+  }
+
+  button,
+  a,
+  input,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgba(125, 211, 252, 0.9);
+    outline-offset: 2px;
+  }
+}
+
+.hero-title {
+  font-size: clamp(3.25rem, 9vw, 6.5rem);
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: -0.08em;
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.85), transparent 80%);
+  animation: gridFloat 18s linear infinite;
+}
+
+.hero-particles {
+  background-image:
+    radial-gradient(circle, rgba(56, 189, 248, 0.9) 0, rgba(56, 189, 248, 0) 55%),
+    radial-gradient(circle, rgba(125, 211, 252, 0.65) 0, rgba(125, 211, 252, 0) 48%),
+    radial-gradient(circle, rgba(56, 189, 248, 0.45) 0, rgba(56, 189, 248, 0) 40%);
+  background-size: 14px 14px, 22px 22px, 30px 30px;
+  background-position: 8% 15%, 78% 26%, 58% 76%;
+  opacity: 0.55;
+  animation: particlesDrift 12s ease-in-out infinite alternate;
+}
+
+.animate-fade-up {
+  animation: fadeUp 720ms ease-out both;
+}
+
+.animate-slide-up {
+  animation: slideUp 840ms ease-out both;
+}
+
+.mobile-nav-open {
+  animation: dropDown 220ms ease-out both;
+}
+
+.timeline-card {
+  animation: slideUp 840ms ease-out both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dropDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gridFloat {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(64px);
+  }
+}
+
+@keyframes particlesDrift {
+  from {
+    transform: translate3d(-1%, -1%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(1.5%, 1.5%, 0) scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

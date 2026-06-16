@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "migrated": false,
+  "source": "current",
+  "notes": [],
+  "recordCounts": {
+    "memories": 3,
+    "memoryTags": 9,
+    "memoryLinks": 0,
+    "journalEntries": 0,
+    "journalLinks": 0,
+    "memoryActions": 33
+  }
+}

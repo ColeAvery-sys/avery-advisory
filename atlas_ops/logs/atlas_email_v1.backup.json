@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-06-12T15:44:01.092Z",
+  "updatedAt": "2026-06-12T15:44:12.551Z",
+  "emails": [
+    {
+      "id": "email-mqb3k1dp-07fb41",
+      "subject": "Grant approval request",
+      "sender": "cole@averyindustries.com",
+      "recipients": [
+        "program@grants.org"
+      ],
+      "cc": [],
+      "bcc": [],
+      "timestamp": "2026-06-12T15:44:12.540Z",
+      "threadId": "thread-cole-averyindustries-com-mqb3k1dp",
+      "status": "Draft",
+      "classification": "Client",
+      "body": "Please approve the EchoFrame grant paperwork.",
+      "snippet": "Please approve the EchoFrame grant paperwork.",
+      "replyRequired": false,
+      "followUpStatus": "None",
+      "followUpDueAt": null,
+      "receivedAt": null,
+      "sentAt": null,
+      "draftedAt": "2026-06-12T15:44:12.540Z",
+      "repliedAt": null,
+      "forwardedAt": null,
+      "archivedAt": null,
+      "deletedAt": null,
+      "inReplyToId": null,
+      "forwardedFromId": null,
+      "linkedProjectIds": [
+        "echoframe"
+      ],
+      "linkedTaskIds": [
+        "grant-paperwork"
+      ],
+      "linkedContactIds": [
+        "program-officer"
+      ],
+      "linkedMemoryIds": [],
+      "links": [
+        {
+          "targetType": "Project",
+          "targetId": "echoframe"
+        },
+        {
+          "targetType": "Task",
+          "targetId": "grant-paperwork"
+        },
+        {
+          "targetType": "Contact",
+          "targetId": "program-officer"
+        }
+      ],
+      "createdAt": "2026-06-12T15:44:12.540Z",
+      "updatedAt": "2026-06-12T15:44:12.540Z"
+    }
+  ]
+}
