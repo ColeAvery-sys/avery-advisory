@@ -1,12 +1,18 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, BadgeCheck, Bot, Layers3, Workflow } from 'lucide-react';
+import { ArrowRight, BarChart3, Bot, Layers3, Workflow } from 'lucide-react';
 import { processSteps, siteName, tagline, whyCards } from '@/lib/site';
 
 const stats = [
+  { label: 'Primary focus', value: 'Marketing consolidation' },
+  { label: 'Secondary layer', value: 'AI support' },
   { label: 'Response time', value: '1 business day' },
-  { label: 'Delivery style', value: 'Practical and documented' },
-  { label: 'Payment readiness', value: 'Stripe link friendly' },
 ];
+
+export const metadata = {
+  title: 'Home',
+  description: 'Avery Advisory helps consolidate marketing, simplify execution, and apply AI where it creates leverage.',
+};
 
 export default function HomePage() {
   return (
@@ -19,12 +25,12 @@ export default function HomePage() {
 
           <div className="space-y-5">
             <h1 className="max-w-3xl text-5xl font-semibold leading-[0.92] text-white sm:text-6xl lg:text-7xl">
-              Stop Repeating Work.
-              <span className="block text-[#d4af37]">Start Automating Growth.</span>
+              Consolidate the message.
+              <span className="block text-[#d4af37]">Then use AI with intent.</span>
             </h1>
             <p className="max-w-2xl text-base leading-7 text-white/70 sm:text-lg">
-              {siteName} helps businesses implement AI, automation, and operational systems that save time, reduce costs, and
-              scale efficiently.
+              {siteName} helps you clean up the marketing stack, reduce duplication, and build a simpler operating system before
+              adding automation.
             </p>
           </div>
 
@@ -33,7 +39,7 @@ export default function HomePage() {
               href="/contact"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-[#d4af37] px-6 py-3 text-sm font-semibold text-[#0a0a0a] transition hover:bg-[#e8c55d]"
             >
-              Book Free Consultation
+              Start a Project
               <ArrowRight size={16} />
             </Link>
             <Link
@@ -60,10 +66,23 @@ export default function HomePage() {
           <div className="panel gold-border relative overflow-hidden rounded-[2rem] p-6">
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#d4af37] to-transparent" />
             <div className="grid gap-4">
+              <div className="rounded-[1.5rem] border border-white/8 bg-[#081019] p-4">
+                <div className="relative h-[180px] overflow-hidden rounded-[1rem] bg-[#0f1621] sm:h-[220px]">
+                  <Image
+                    src="/avery-advisory-brand.png"
+                    alt={`${siteName} brand mark`}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-contain object-center p-3"
+                  />
+                </div>
+              </div>
+
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.28em] text-[#f4df9d]">Operational Snapshot</p>
-                  <p className="mt-2 text-2xl font-semibold text-white">Executive-grade execution</p>
+                  <p className="text-xs uppercase tracking-[0.28em] text-[#f4df9d]">Operating Snapshot</p>
+                  <p className="mt-2 text-2xl font-semibold text-white">Marketing first. AI second.</p>
                 </div>
                 <div className="rounded-full border border-[#d4af37]/25 bg-[#d4af37]/10 px-3 py-1 text-xs font-semibold text-[#f4df9d]">
                   Ready
@@ -72,31 +91,31 @@ export default function HomePage() {
 
               <div className="grid gap-3 md:grid-cols-2">
                 <div className="rounded-3xl border border-white/8 bg-black/30 p-4">
-                  <Bot className="text-[#d4af37]" size={20} />
-                  <h2 className="mt-4 text-base font-semibold">AI Automation</h2>
+                  <Layers3 className="text-[#d4af37]" size={20} />
+                  <h2 className="mt-4 text-base font-semibold">Marketing Consolidation</h2>
                   <p className="mt-2 text-sm leading-6 text-white/65">
-                    Streamline repeat tasks with practical workflows that improve consistency and throughput.
+                    Merge scattered offers, pages, and messages into one clearer system.
                   </p>
                 </div>
                 <div className="rounded-3xl border border-white/8 bg-black/30 p-4">
-                  <Layers3 className="text-[#d4af37]" size={20} />
-                  <h2 className="mt-4 text-base font-semibold">Business Systems</h2>
+                  <BarChart3 className="text-[#d4af37]" size={20} />
+                  <h2 className="mt-4 text-base font-semibold">Operational Clarity</h2>
                   <p className="mt-2 text-sm leading-6 text-white/65">
-                    Convert informal operations into clear systems with owners, steps, and standards.
+                    Make the business easier to understand, measure, and run.
                   </p>
                 </div>
                 <div className="rounded-3xl border border-white/8 bg-black/30 p-4">
                   <Workflow className="text-[#d4af37]" size={20} />
-                  <h2 className="mt-4 text-base font-semibold">Process Optimization</h2>
+                  <h2 className="mt-4 text-base font-semibold">Execution Systems</h2>
                   <p className="mt-2 text-sm leading-6 text-white/65">
-                    Reduce friction, remove waste, and make the workflow easier to repeat at scale.
+                    Build repeatable workflows before introducing more complexity.
                   </p>
                 </div>
                 <div className="rounded-3xl border border-white/8 bg-black/30 p-4">
-                  <BadgeCheck className="text-[#d4af37]" size={20} />
-                  <h2 className="mt-4 text-base font-semibold">Stripe-Ready</h2>
+                  <Bot className="text-[#d4af37]" size={20} />
+                  <h2 className="mt-4 text-base font-semibold">AI Support</h2>
                   <p className="mt-2 text-sm leading-6 text-white/65">
-                    Payment link slots are ready for discovery, strategy, audit, and custom project offers.
+                    Add AI where it saves time after the structure is already clean.
                   </p>
                 </div>
               </div>
@@ -109,7 +128,7 @@ export default function HomePage() {
         <div className="flex items-end justify-between gap-4">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-[#f4df9d]">Why Avery Advisory</p>
-            <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">A practical operating partner for growth-minded teams.</h2>
+            <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">A cleaner way to market and operate.</h2>
           </div>
         </div>
 
@@ -126,10 +145,10 @@ export default function HomePage() {
 
       <section className="mt-20 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="space-y-4">
-          <p className="text-xs uppercase tracking-[0.3em] text-[#f4df9d]">How It Works</p>
-          <h2 className="text-3xl font-semibold text-white sm:text-4xl">A clean delivery process that keeps the work moving.</h2>
+          <p className="text-xs uppercase tracking-[0.3em] text-[#f4df9d]">Process</p>
+          <h2 className="text-3xl font-semibold text-white sm:text-4xl">Simple sequence. Less drag. Better execution.</h2>
           <p className="max-w-xl text-sm leading-7 text-white/65">
-            Every engagement is designed to move from clarity to action without unnecessary complexity.
+            The sequence starts with consolidation, then clarity, then automation, then maintenance.
           </p>
         </div>
 
@@ -145,34 +164,14 @@ export default function HomePage() {
       </section>
 
       <section className="mt-20">
-        <div className="flex items-end justify-between gap-4">
-          <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-[#f4df9d]">Testimonials</p>
-            <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">Client proof will grow here as new engagements complete.</h2>
-          </div>
-        </div>
-
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
-          {[
-            'Placeholder testimonial 1. Replace with verified client feedback after deployment.',
-            'Placeholder testimonial 2. Keep all testimonials factual and approved before publishing.',
-            'Placeholder testimonial 3. Use short, specific outcomes whenever possible.',
-          ].map((copy) => (
-            <article key={copy} className="panel rounded-[1.5rem] p-6">
-              <p className="text-sm leading-7 text-white/65">{copy}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="mt-20">
         <div className="panel gold-border rounded-[2rem] p-8 sm:p-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-2xl space-y-3">
               <p className="text-xs uppercase tracking-[0.3em] text-[#f4df9d]">Call To Action</p>
-              <h2 className="text-3xl font-semibold text-white sm:text-4xl">If the work is repetitive, slow, or unclear, we can probably systemize it.</h2>
+              <h2 className="text-3xl font-semibold text-white sm:text-4xl">If the marketing is fragmented, the next step is to consolidate it.</h2>
               <p className="text-sm leading-7 text-white/65">
-                Start with a free consultation and walk away with a sharper plan, clearer priorities, and next steps you can use.
+                Start with a short call and we&apos;ll map the quickest path to a cleaner message, simpler execution, and the right
+                use of AI.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
@@ -180,7 +179,7 @@ export default function HomePage() {
                 href="/contact"
                 className="inline-flex items-center justify-center rounded-full bg-[#d4af37] px-6 py-3 text-sm font-semibold text-[#0a0a0a] transition hover:bg-[#e8c55d]"
               >
-                Book Free Consultation
+                Book Free Call
               </Link>
               <Link
                 href="/services"

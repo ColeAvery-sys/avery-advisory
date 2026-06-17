@@ -1,10 +1,13 @@
 export const siteName = 'Avery Advisory';
-export const tagline = 'Business Automation • AI Consulting • Operational Excellence';
+export const tagline = 'Marketing Consolidation | AI Second | Operational Clarity';
 export const companyLegalName = 'Avery Industries LLC';
-export const founderName = 'Cole Ends';
+export const founderName = 'Cole Avery Ends';
 export const contactEmail = 'alphapotentiallive@gmail.com';
+export const secondaryContactEmail = 'ColeAvery@Avery-Advisory.com';
 export const responseTime = 'Within 1 Business Day';
 export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://avery-advisory.com';
+export const stripePublishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? '';
+export const stripeIsConfigured = stripePublishableKey.trim().length > 0;
 export const effectiveDate = 'June 16, 2026';
 
 type PaymentLinkKey = 'strategy' | 'audit' | 'custom';
@@ -33,48 +36,48 @@ export const navLinks = [
 
 export const whyCards = [
   {
-    title: 'AI Automation',
-    body: 'Replace repetitive admin work with dependable systems that improve speed, accuracy, and throughput.',
+    title: 'Marketing Consolidation',
+    body: 'Pull scattered offers, pages, and messages into one cleaner operating structure that is easier to sell and manage.',
   },
   {
-    title: 'Business Systems',
-    body: 'Turn scattered processes into simple operating rhythms, clearer ownership, and better visibility.',
+    title: 'Execution Systems',
+    body: 'Turn recurring work into simple operating rhythms with clearer ownership, reporting, and follow-through.',
   },
   {
-    title: 'Process Optimization',
-    body: 'Remove waste, compress cycle time, and make the work easier to repeat as the company grows.',
+    title: 'AI Second',
+    body: 'Apply AI where it removes friction after the marketing and operations structure is already clean.',
   },
 ];
 
 export const processSteps = [
   {
     step: '1',
-    title: 'Discovery',
-    body: 'We review your goals, bottlenecks, tools, and current operating model.',
+    title: 'Consolidate',
+    body: 'We review offers, pages, channels, and repeat work to find what should be unified.',
   },
   {
     step: '2',
-    title: 'Strategy',
-    body: 'We map the highest-value automation and process changes for the business.',
+    title: 'Clarify',
+    body: 'We define the core message, the primary offer, and the smallest structure that can support growth.',
   },
   {
     step: '3',
-    title: 'Implementation',
-    body: 'We build the system, document the workflow, and launch the working version.',
+    title: 'Automate',
+    body: 'We add AI and workflow support after the marketing foundation is organized and easier to run.',
   },
   {
     step: '4',
-    title: 'Support',
-    body: 'We tune the process, answer questions, and maintain momentum after launch.',
+    title: 'Maintain',
+    body: 'We keep the system documented, measurable, and easy to operate as the brand grows.',
   },
 ];
 
 export const services = [
-  'AI & Automation Consulting',
-  'Business Process Design',
-  'Workflow Optimization',
-  'Content & Marketing Systems',
-  'Operations Audits',
+  'Marketing Consolidation',
+  'Brand Messaging Systems',
+  'AI Workflow Support',
+  'Operations Audit',
+  'Content System Design',
   'Custom Automation Projects',
 ];
 
@@ -82,30 +85,34 @@ export const pricingCards = [
   {
     name: 'Discovery Call',
     price: 'Free',
-    description: 'A short intake call to identify the problem and decide whether we are a fit.',
-    actionLabel: 'Book Free Consultation',
+    description: 'A short intake call to identify the highest-leverage problem and decide whether we are a fit.',
+    actionLabel: 'Book Free Call',
     href: '/contact',
   },
   {
     name: 'Strategy Session',
     price: '$150',
-    description: 'A focused working session with next-step recommendations and clarity.',
+    description: 'A focused working session to find the fastest path to cleaner messaging and stronger conversion.',
     actionLabel: 'Pay with Stripe',
     href: getPaymentLink('strategy') ?? '/contact',
+    badge: 'Best Entry',
   },
   {
-    name: 'Automation Audit',
+    name: 'Consolidation Audit',
     price: '$500',
-    description: 'A practical review of systems, bottlenecks, and automation opportunities.',
+    description: 'A practical review of pages, offers, channels, and repeat work to identify what should be combined for more leverage.',
     actionLabel: 'Pay with Stripe',
     href: getPaymentLink('audit') ?? '/contact',
+    badge: 'Best Value',
+    featured: true,
   },
   {
     name: 'Custom Project',
     price: 'Custom Quote',
-    description: 'A scoped implementation project for recurring operational leverage.',
+    description: 'A scoped implementation project for recurring operational leverage and premium execution.',
     actionLabel: 'Contact Us',
     href: getPaymentLink('custom') ?? '/contact',
+    badge: 'Premium',
   },
 ];
 
@@ -113,6 +120,6 @@ export const founderProfile = {
   name: founderName,
   title: 'Founder',
   bio:
-    '10+ years of experience across customer service, sales, operations, technology, and business systems. Focused on helping organizations implement practical automation and AI solutions that drive measurable results.',
-  mission: 'Build useful technology that helps people work smarter, not harder.',
+    '10+ years of experience across customer service, sales, operations, marketing, and business systems. Focused on helping organizations consolidate the message first, then apply AI where it creates leverage.',
+  mission: 'Build useful systems that make marketing cleaner, operations simpler, and AI more effective.',
 };

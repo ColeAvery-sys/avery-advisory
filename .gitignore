@@ -6,3 +6,5 @@ dist/
 !*.example
 coverage/
 *.log
+
+.vercel

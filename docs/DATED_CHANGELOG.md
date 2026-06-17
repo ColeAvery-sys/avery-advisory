@@ -94,6 +94,30 @@ Purpose: simple date-based log of major workspace organization changes.
 - Added a local ATLAS Recruiter dashboard with profile editing, job-feed import, application status logging, and approval-gated outbound planning.
 - Added recruiter engine validation coverage and local run scripts.
 
+## 2026-06-16
+
+- Added Avery Industries LLC launch blueprint for the cheapest shared-platform approach to the brand network.
+- Added a reusable company-network registry with launch stages for Avery Advisory, AveryTech, Atlas Protocol, Creator Logistics, Avery Supply Co., Avery Athletics, ColeTrain Studios, Avery Entertainment, Avery Foundation, Avery Collectables, and Avery Music Group.
+- Rebuilt the homepage as the Avery Industries LLC headquarters hub.
+- Added reusable division pages under `/brands/[slug]` for the company network.
+- Added a new Avery Industries LLC company network page in the Next.js app.
+- Wired the company network and brand pages into navigation and sitemap coverage.
+- Added host-based middleware rewrites so division domains can resolve to the correct brand page later.
+- Updated the home page with a company-network section that previews the umbrella structure and first launch lane.
+- Logged the parent-company rollout as a roadmap track and systems-index entry.
+
+## 2026-06-17
+
+- Shifted the public website branding back to Avery Advisory.
+- Updated the shared site constants to use `ColeAvery@Avery-Advisory.com`, founder name `Cole Avery Ends`, and the Avery Advisory site URL.
+- Repositioned the homepage around marketing consolidation first and AI second.
+- Updated the services, about, contact, privacy, terms, refund, header, footer, and contact draft email flow to match the Avery Advisory brand.
+- Added the Avery Advisory brand image asset to the public site and wired it into the header and homepage hero.
+- Split contact handling across `alphapotentiallive@gmail.com` as the primary draft inbox and `ColeAvery@Avery-Advisory.com` as the visible secondary contact email.
+- Refined the footer into a more executive multi-column layout with both contact addresses and cleaner support links.
+- Tightened the footer contact card with stronger hierarchy, direct mailto actions, and a clearer primary inbox treatment.
+- Added public Stripe publishable-key configuration and upgraded the services pricing surface with a featured value card and Stripe-ready status copy.
+
 ## Rule
 
 When a major system is added or promoted to active use, add a dated entry here.

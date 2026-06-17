@@ -9,7 +9,7 @@ const sections = [
   {
     title: 'Overview',
     body: [
-      `${siteName} is operated by ${companyLegalName} and provides consulting, strategy, and operational services through ${siteUrl}.`,
+      `${siteName} is operated by ${companyLegalName} and provides company operations, division routing, and consulting services through ${siteUrl}.`,
       'This Privacy Policy explains what information we collect, how we use it, and the choices you have when you interact with our website or contact us.',
     ],
   },

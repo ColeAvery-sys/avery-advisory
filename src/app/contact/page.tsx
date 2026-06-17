@@ -1,9 +1,9 @@
 import ContactForm from '@/components/contact-form';
-import { contactEmail, responseTime, siteName } from '@/lib/site';
+import { contactEmail, responseTime, secondaryContactEmail, siteName } from '@/lib/site';
 
 export const metadata = {
   title: 'Contact',
-  description: 'Contact Avery Advisory for consultations, strategy sessions, and custom automation projects.',
+  description: 'Contact Avery Advisory for marketing consolidation, AI support, and custom systems work.',
 };
 
 export default function ContactPage() {
@@ -31,16 +31,21 @@ export default function ContactPage() {
                   {contactEmail}
                 </a>
               </p>
+              <p>
+                Secondary Email:{' '}
+                <a className="text-[#f4df9d] transition hover:text-[#ffe9a8]" href={`mailto:${secondaryContactEmail}`}>
+                  {secondaryContactEmail}
+                </a>
+              </p>
               <p>Response Time: {responseTime}</p>
-              <p>Availability is best for consulting, operational systems, and automation projects.</p>
+              <p>Availability is best for marketing consolidation, operational systems, and AI support projects.</p>
             </div>
           </div>
 
           <div className="panel rounded-[1.75rem] p-6">
-            <p className="text-xs uppercase tracking-[0.3em] text-[#f4df9d]">Stripe Readiness</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-[#f4df9d]">Working Style</p>
             <p className="mt-4 text-sm leading-7 text-white/65">
-              Strategy Session, Automation Audit, and Custom Project payment links can be wired in as live Stripe Payment Links
-              using environment variables during deployment.
+              We review the current message, simplify the structure, and then decide where AI makes the most sense.
             </p>
           </div>
         </aside>

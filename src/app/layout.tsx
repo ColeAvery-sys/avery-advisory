@@ -19,15 +19,15 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${siteName} | AI Automation & Business Consulting`,
+    default: `${siteName} | Marketing Consolidation & AI`,
     template: `%s | ${siteName}`,
   },
-  description: 'Helping businesses implement AI, automation, and operational systems that save time, reduce costs, and scale efficiently.',
+  description: 'Avery Advisory helps consolidate marketing, simplify execution, and apply AI where it creates leverage.',
   applicationName: siteName,
   authors: [{ name: siteName }],
   creator: siteName,
   openGraph: {
-    title: `${siteName} | AI Automation & Business Consulting`,
+    title: `${siteName} | Marketing Consolidation & AI`,
     description: tagline,
     url: siteUrl,
     siteName,
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${siteName} | AI Automation & Business Consulting`,
+    title: `${siteName} | Marketing Consolidation & AI`,
     description: tagline,
   },
   alternates: {

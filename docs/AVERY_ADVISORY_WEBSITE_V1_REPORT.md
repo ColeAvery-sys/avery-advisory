@@ -28,7 +28,9 @@ The site includes:
 
 ## Notes
 
+- Stripe front-end configuration now recognizes `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` and the existing Payment Link variables.
 - Stripe Payment Links are wired for environment-variable support:
+  - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
   - `NEXT_PUBLIC_STRIPE_STRATEGY_LINK`
   - `NEXT_PUBLIC_STRIPE_AUDIT_LINK`
   - `NEXT_PUBLIC_STRIPE_CUSTOM_LINK`
@@ -43,4 +45,3 @@ The site includes:
 4. Enable the domain DNS records and let SSL provision.
 5. Add real Stripe Payment Link URLs to the Vercel environment variables listed above.
 6. Replace the contact draft flow with your preferred production form endpoint if you want direct lead capture instead of email-draft submission.
-

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useMemo, useState } from 'react';
@@ -16,12 +17,18 @@ export default function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0a0a0a]/90 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d4af37]/40 bg-[#1a1a1a] text-sm font-semibold text-[#d4af37]">
-            AA
+          <span className="relative h-10 w-[180px] overflow-hidden rounded-md border border-white/8 bg-[#0f1621] px-2 py-1 sm:w-[220px]">
+            <Image
+              src="/avery-advisory-brand.png"
+              alt={`${siteName} logo`}
+              fill
+              priority
+              sizes="(max-width: 640px) 180px, 220px"
+              className="object-contain object-left"
+            />
           </span>
-          <span className="leading-tight">
-            <span className="block text-sm font-semibold tracking-[0.3em] text-white">{siteName}</span>
-            <span className="block text-[11px] uppercase tracking-[0.32em] text-white/55">Consulting Systems</span>
+          <span className="hidden leading-tight sm:block">
+            <span className="block text-[11px] uppercase tracking-[0.32em] text-white/55">Marketing Systems</span>
           </span>
         </Link>
 
@@ -47,7 +54,7 @@ export default function SiteHeader() {
             href="/contact"
             className="rounded-full border border-[#d4af37]/40 px-4 py-2 text-sm font-medium text-[#f4df9d] transition hover:border-[#d4af37] hover:bg-[#d4af37]/10"
           >
-            Book Free Consultation
+            Start a Project
           </Link>
         </div>
 
@@ -82,7 +89,7 @@ export default function SiteHeader() {
               onClick={() => setOpen(false)}
               className="rounded-2xl border border-[#d4af37]/40 px-4 py-3 text-center text-sm font-medium text-[#f4df9d]"
             >
-              Book Free Consultation
+              Start a Project
             </Link>
           </div>
         </div>

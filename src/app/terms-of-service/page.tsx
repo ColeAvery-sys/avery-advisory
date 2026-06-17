@@ -16,7 +16,7 @@ const sections = [
   {
     title: 'Services',
     body: [
-      `${siteName} provides consulting, strategy, process improvement, automation design, and related advisory services.`,
+      `${siteName} provides consulting, strategy, process improvement, automation design, and related operating services.`,
       'Specific deliverables, timelines, and scope will be confirmed in writing before work begins.',
     ],
   },

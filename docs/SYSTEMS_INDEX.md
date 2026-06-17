@@ -20,6 +20,7 @@ Purpose: ADHD-friendly map of what exists, what matters now, and what should sta
 | ATLAS Command Center | `docs/atlas_command_center/index.html` | Local browser homepage for ATLAS info, tools, docs, reports, portfolios, and system navigation. | Active |
 | Avery Industries 24-Month Timeline | `docs/AVERY_INDUSTRIES_24_MONTH_TIMELINE.md` | Realistic roadmap for ATLAS Command Center, Creator Logistics, ATLAS Assist, disability-aid workflows, GPS/location tags, smart glasses, facial and hand-signal research. | Active |
 | Avery Industries Brand System | `docs/AVERY_INDUSTRIES_BRAND_SYSTEM.md` | Shared branding direction for ATLAS//CORE, Avery Industries, dashboard rebrands, colors, fonts, orb/chatbox, and smart-glasses safety framing. | Active |
+| Avery Industries Launch Blueprint | `docs/AVERY_INDUSTRIES_LAUNCH_BLUEPRINT.md` | Cheapest shared-platform plan for the Avery Industries LLC mother page and division network. | Active |
 | ATLAS Career OS | `docs/career_os/index.html` | Local master career profile, LinkedIn sync engine, ATS resume generator, interview prep, and approval-gated automation planning. | Active |
 | ATLAS Recruiter | `docs/atlas_recruiter/index.html` | Local job search, ranking, application drafting, response tracking, interview tracking, and approval-gated follow-up planning. | Active |
 

@@ -48,6 +48,17 @@ Primary domains:
 - Local React dashboard and file-backed server added.
 - Validation script added; build and smoke test still need to be run in this workspace before release.
 
+### Current Avery Advisory Phase
+- Public website branding shifted back to Avery Advisory.
+- Shared site constants now use the Avery Advisory contact email, founder name, and site URL.
+- Homepage, services, about, and contact pages now speak to marketing consolidation first and AI second.
+- The Avery Advisory logo image is now used in the header and homepage hero.
+- Contact intake now uses `alphapotentiallive@gmail.com` as the primary draft inbox and shows `ColeAvery@Avery-Advisory.com` as the secondary site contact.
+- The footer now uses a cleaner multi-column layout and surfaces both contact addresses more clearly.
+- The footer contact card now emphasizes the primary inbox and adds direct email/contact actions.
+- Stripe now recognizes a public publishable-key config flag and the services page highlights the featured value offer with Stripe-ready status text.
+- Next step: finish any remaining Avery Advisory copy sweep and validate the rendered pages.
+
 ## Done Means
 A feature is not done until:
 - it works locally
