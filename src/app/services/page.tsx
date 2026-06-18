@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2, CreditCard } from 'lucide-react';
+import TrackedLink from '@/components/tracked-link';
 import { pricingCards, services, siteName, stripeIsConfigured } from '@/lib/site';
 
 export const metadata = {
@@ -82,18 +83,40 @@ export default function ServicesPage() {
         <div className="panel rounded-[2rem] p-8 sm:p-10">
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
             <div className="space-y-3">
+              <p className="text-xs uppercase tracking-[0.3em] text-[#f4df9d]">Creator Logistics</p>
+              <h2 className="text-3xl font-semibold text-white sm:text-4xl">The service page for editing, shorts, thumbnails, and creator operations.</h2>
+              <p className="text-sm leading-7 text-white/65">
+                If the client needs ongoing content support, the Creator Logistics offer keeps the work under the same Avery Advisory domain.
+              </p>
+            </div>
+            <TrackedLink
+              href="/creator-logistics"
+              eventName="services_cta"
+              className="inline-flex items-center justify-center rounded-full bg-[#d4af37] px-6 py-3 text-sm font-semibold text-[#0a0a0a] transition hover:bg-[#e8c55d]"
+            >
+              View Creator Logistics
+            </TrackedLink>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-20">
+        <div className="panel rounded-[2rem] p-8 sm:p-10">
+          <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div className="space-y-3">
               <p className="text-xs uppercase tracking-[0.3em] text-[#f4df9d]">Contact Us</p>
               <h2 className="text-3xl font-semibold text-white sm:text-4xl">Need help consolidating a larger marketing system?</h2>
               <p className="text-sm leading-7 text-white/65">
                 Share the current structure, the offers, and the outcome you want. We&apos;ll respond with the next best step.
               </p>
             </div>
-            <Link
+            <TrackedLink
               href="/contact"
+              eventName="contact_us"
               className="inline-flex items-center justify-center rounded-full bg-[#d4af37] px-6 py-3 text-sm font-semibold text-[#0a0a0a] transition hover:bg-[#e8c55d]"
             >
               Contact Us
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </section>

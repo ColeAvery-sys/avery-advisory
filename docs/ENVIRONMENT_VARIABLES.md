@@ -8,9 +8,15 @@ Project-specific environment variables currently used by the Avery Advisory site
 
 - `NEXT_PUBLIC_SITE_URL`
 - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
-- `NEXT_PUBLIC_STRIPE_STRATEGY_LINK`
-- `NEXT_PUBLIC_STRIPE_AUDIT_LINK`
-- `NEXT_PUBLIC_STRIPE_CUSTOM_LINK`
+- `STRIPE_SECRET_KEY`
+- `STRIPE_WEBHOOK_SECRET`
+- `NEXT_PUBLIC_GA_ID`
+- `NEXT_PUBLIC_CLARITY_ID`
+- `STRIPE_PRICE_CREATOR_STARTER`
+- `STRIPE_PRICE_CREATOR_GROWTH`
+- `STRIPE_PRICE_CREATOR_OPERATOR`
+- `RESEND_API_KEY`
+- `RESEND_FROM_EMAIL`
 - `ATLAS_LOCAL_ONLY`
 - `ATLAS_PORT`
 - `PUBLIC_SITE_BASE_URL`
@@ -30,9 +36,15 @@ These are placeholders only. Do not put real secrets in documentation or source 
 | `GMAIL_DRAFTS_ENABLED` | Optional | Future switch for Gmail draft staging. Should never auto-send. |
 | `PUBLIC_SITE_BASE_URL` | Optional | Future public website URL for generated links and CTAs. |
 | `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | Optional | Public Stripe config for front-end readiness and Stripe-aware UI states. |
-| `NEXT_PUBLIC_STRIPE_STRATEGY_LINK` | Optional | Stripe payment link for the strategy session. |
-| `NEXT_PUBLIC_STRIPE_AUDIT_LINK` | Optional | Stripe payment link for the consolidation audit. |
-| `NEXT_PUBLIC_STRIPE_CUSTOM_LINK` | Optional | Stripe payment link for custom projects. |
+| `STRIPE_SECRET_KEY` | Optional | Server-only Stripe secret used to create Checkout Sessions. |
+| `STRIPE_WEBHOOK_SECRET` | Optional | Server-only Stripe webhook secret used to verify incoming events. |
+| `NEXT_PUBLIC_GA_ID` | Optional | Google Analytics 4 measurement ID for page and conversion tracking. |
+| `NEXT_PUBLIC_CLARITY_ID` | Optional | Microsoft Clarity project ID for session replay and heatmaps. |
+| `STRIPE_PRICE_CREATOR_STARTER` | Optional | Stripe price ID for the Creator Logistics Starter subscription. |
+| `STRIPE_PRICE_CREATOR_GROWTH` | Optional | Stripe price ID for the Creator Logistics Growth subscription. |
+| `STRIPE_PRICE_CREATOR_OPERATOR` | Optional | Stripe price ID for the Creator Logistics Operator subscription. |
+| `RESEND_API_KEY` | Optional | Email notification key for lead capture notifications. |
+| `RESEND_FROM_EMAIL` | Optional | Verified sender for outbound lead notification emails. |
 
 ## Example `.env.example`
 
@@ -41,13 +53,17 @@ ATLAS_LOCAL_ONLY=true
 ATLAS_PORT=3000
 PUBLIC_SITE_BASE_URL=https://example.com
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+NEXT_PUBLIC_GA_ID=
+NEXT_PUBLIC_CLARITY_ID=
+STRIPE_PRICE_CREATOR_STARTER=
+STRIPE_PRICE_CREATOR_GROWTH=
+STRIPE_PRICE_CREATOR_OPERATOR=
 
 # Paid or sensitive APIs stay empty until explicitly configured.
 ELEVENLABS_API_KEY=
 OPENAI_API_KEY=
-NEXT_PUBLIC_STRIPE_STRATEGY_LINK=
-NEXT_PUBLIC_STRIPE_AUDIT_LINK=
-NEXT_PUBLIC_STRIPE_CUSTOM_LINK=
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 GMAIL_DRAFTS_ENABLED=false

@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { ArrowRight, BarChart3, Bot, Layers3, Workflow } from 'lucide-react';
+import TrackedLink from '@/components/tracked-link';
 import { processSteps, siteName, tagline, whyCards } from '@/lib/site';
 
 const stats = [
@@ -35,19 +35,21 @@ export default function HomePage() {
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Link
+            <TrackedLink
               href="/contact"
+              eventName="hero_cta"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-[#d4af37] px-6 py-3 text-sm font-semibold text-[#0a0a0a] transition hover:bg-[#e8c55d]"
             >
               Start a Project
               <ArrowRight size={16} />
-            </Link>
-            <Link
+            </TrackedLink>
+            <TrackedLink
               href="/services"
+              eventName="services_cta"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-white/12 bg-white/[0.02] px-6 py-3 text-sm font-semibold text-white transition hover:border-[#d4af37]/40 hover:bg-white/[0.05]"
             >
               View Services
-            </Link>
+            </TrackedLink>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-3">
@@ -175,18 +177,20 @@ export default function HomePage() {
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Link
+              <TrackedLink
                 href="/contact"
+                eventName="book_consultation"
                 className="inline-flex items-center justify-center rounded-full bg-[#d4af37] px-6 py-3 text-sm font-semibold text-[#0a0a0a] transition hover:bg-[#e8c55d]"
               >
                 Book Free Call
-              </Link>
-              <Link
+              </TrackedLink>
+              <TrackedLink
                 href="/services"
+                eventName="services_cta"
                 className="inline-flex items-center justify-center rounded-full border border-white/12 bg-white/[0.02] px-6 py-3 text-sm font-semibold text-white transition hover:border-[#d4af37]/40"
               >
                 View Services
-              </Link>
+              </TrackedLink>
             </div>
           </div>
         </div>

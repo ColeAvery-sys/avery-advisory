@@ -8,7 +8,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src/app src/components/site-header.tsx src/components/site-footer.tsx src/components/contact-form.tsx src/lib/site.ts",
+    "lint": "eslint src/app src/components src/lib",
     "preview": "next start",
     "build:tools": "tsc",
     "demo": "node scoreAtlasItem.demo.js",
